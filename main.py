@@ -1,3 +1,8 @@
 from tkinter import *
 
-window = tk() 
+window = Tk() 
+window.geometry("720x400")
+window.title("Website Blocker")
+window.config(background="#ffd6e5")
+
+window.mainloop() #to see preview
