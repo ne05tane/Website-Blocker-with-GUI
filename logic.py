@@ -20,3 +20,4 @@ def block(duration_hours, website_list):
                     else:
                         fh.write(redirect + " " + site + "\n")
 
+            time.sleep(30) 
