@@ -19,5 +19,18 @@ def block(duration_hours, website_list):
                         pass
                     else:
                         fh.write(redirect + " " + site + "\n")
+        
+        else:  #unblock phase
+            with open(path_to_host, "r+") as fo:
+                content = fo.readlines()
+                fo.seek(0)
+                for line in content:
+                    if not any(site in line for site in website_list):
+                        fo.write(line)
+                fo.truncate()
 
-            time.sleep(30) 
+            break
+        
+        time.sleep(30)
+
+
