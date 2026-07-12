@@ -6,6 +6,17 @@ redirect = "127.0.0.1"
 
 #blocking logic
 
-end_time = datetime.datetime.now() + datetime.timedelta(hours=duration_hours)
+def block(duration_hours, website_list):
 
+    end_time = datetime.datetime.now() + datetime.timedelta(hours=duration_hours)
+
+    while True:
+        if datetime.datetime.now < end_time:
+            with open(path_to_host, "r+") as fh:
+                content = fh.read()
+                for site in website_list:
+                    if site in content:
+                        pass
+                    else:
+                        fh.write(redirect + " " + site + "\n")
 
