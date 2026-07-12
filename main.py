@@ -2,9 +2,23 @@ from tkinter import *
 import threading
 import logic
 
-block_thread = None
-stop_event = threading.Event()
-is_blocking = False 
+class App:
+    def __init__(self, window):
+        self.window = window
+        self.window.title("Website Blocker")
+        self.window.geometry("720x400")
+        self.window.config(background = "#ffd6e5")
+        self.is_blocking = False
+        self.stop_event = threading.Event()
+        self.block_thread = None
+
+        self._setup_ui()
+
+    def _setup_ui(self):
+        
+        
+                               
+        
 
 
 
@@ -15,13 +29,6 @@ is_blocking = False
 
 
 
-
-
-
-window = Tk() 
-window.geometry("720x400")
-window.title("Website Blocker")
-window.config(background="#ffd6e5")
 
 window.mainloop() 
 
