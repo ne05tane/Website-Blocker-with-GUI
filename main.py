@@ -113,7 +113,13 @@ class App:
             if not messagebox.askyesno('Confirm', f"Block {len(urls)} sites for {hours} hours?"):
                 return
             
-            
+            self.stop_event.clear()
+            self.block_thread = threading.Thread(
+                target=logic.block,
+                args=(hrs,urls, self.stop_event ),
+                daemon= True
+            )
+            self.block_thread.start()
 
 
         
