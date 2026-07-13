@@ -121,6 +121,12 @@ class App:
             )
             self.block_thread.start()
 
+            self.is_blocking = True
+            self.timer_label.config(text=f"Blocking for {hrs}h...", fg="light pink")
+            self.action_btn.config(text="Emergency Unblock", bg="white")
+            self.url_txt.config(state=DISABLED)
+            self.enter_hours.config(state=DISABLED)
+
 
         
         
