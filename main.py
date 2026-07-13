@@ -15,20 +15,17 @@ class App:
         self._setup_ui()
 
     def _setup_ui(self):
-        
-        
-                               
-        
 
+        self.timer = tk.Label(self.window,
+                              text = "Focus",
+                              font = ("Arial", 32, "bold"),
+                              background = "white",
+                              foreground = "#333333"
+                              )
+        self.timer.pack(pady=20)
 
-
-
-
-
-
-
-
-
-
-window.mainloop() 
+if __name__ == "__main__":
+    window = Tk()
+    app = App(window)
+    window.mainloop() 
 
