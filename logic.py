@@ -31,6 +31,6 @@ def block(duration_hours, website_list):
 
             break
         
-        time.sleep(30)
+        time.sleep(5)
 
 
