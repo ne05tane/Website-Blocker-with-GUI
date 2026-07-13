@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter.scrolledtext import ScrolledText
+from tkinter import messagebox
 import threading
 import logic
 
@@ -87,7 +88,21 @@ class App:
               fg="black"
         ).pack(side=BOTTOM, pady=10)
 
+        def toggle_action(self):
+            if not self.is_blocking:
+                self.start_blocking()
+            else:
+                self.stop_blocking()
         
+        def start_blocking(self):
+            try:
+                hrs= float(self.enter_hours.get())
+                if hrs <= 0:
+                    raise ValueError
+            except ValueError:
+                messagebox.showerror("Invalid Input", "please enter valid hours")
+                return
+
 
         
         
