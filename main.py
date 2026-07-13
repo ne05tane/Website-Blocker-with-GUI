@@ -18,8 +18,6 @@ class App:
 
     def _setup_ui(self): 
 
-        '''configures layout + widgets'''
-
         self.timer = Label(self.window,
                               text = "Focus",
                               font = ("Arial", 32, "bold"),
@@ -40,7 +38,7 @@ class App:
             width = 30,
             font = ("Consolas", 14),
             background = "white",
-            relief = FLAT,
+            relief = FLAT
         
         ) 
 
@@ -137,7 +135,7 @@ class App:
             self.url_txt.config(state= NORMAL)
             self.enter_hours.config(state= NORMAL)
 
-            messagebox.showinfo("Unblocked", "sites are unblocked.")
+            messagebox.showinfo("sites are unblocked.")
 
 if __name__ == "__main__":
     window = Tk()
