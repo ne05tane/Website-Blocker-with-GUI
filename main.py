@@ -43,7 +43,53 @@ class App:
             highlightthickness = 2
         
         ) 
+
         self.url_txt.pack(pady= 5, padx = 5)
+
+        duration = Frame(self.window, background = "white")
+        duration.pack(pady=5)
+
+        Label(  duration,
+                text="Duration(Hours):",
+                background = "white",
+                font = ("Arial", 15)
+                
+            ).pack(side=LEFT, padx=5)
+        
+        self.enter_hours = Spinbox(
+            duration,
+            from_=0.1, to=24.0, increment=0.1,
+            width=5,
+            font=("Arial", 11),
+            justify='center'
+        )
+        self.enter_hours.delete(0, END)
+        self.enter_hours.insert(0, "1.0")
+
+        self.enter_hours.pack(side=LEFT)
+
+        self.action_btn = Button(self.window,
+                                 text = "Start Focus session",
+                                 font=("Arial", 14, "bold"),
+                                 background="white",
+                                 foreground="black",
+                                 command = self.toggle_action,
+                                 height =2,
+                                 relief = FLAT,
+                                 cursor="hand1"
+                                )
+        self.action_btn.pck(fill=X, padx=40,pady = 30)
+
+        Label(self.window,
+              text="You must run as admin",
+              font=("Arial", 9),
+              bg="white",
+              fg="black"
+        ).pack(side=BOTTOM, pady=10)
+
+        
+
+        
         
         
                  
