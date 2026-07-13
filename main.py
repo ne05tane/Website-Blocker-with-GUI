@@ -128,10 +128,17 @@ class App:
             self.enter_hours.config(state=DISABLED)
 
 
-        
-        
-        
-                 
+    def stop_blocking(self):
+        if self.block_thread and self.block_thread.is_alive():
+            self.stop_event.set()
+
+            self.is_blocking = False
+            self.timer.config(text="Stopped", fg="black")
+            self.action_btn.config(text="Start Blocking", bg = "light pink")
+            self.url_txt.config(state= NORMAL)
+            self.enter_hours.config(state= NORMAL)
+
+            messagebox.showinfo("Unblocked", "sites are unblocked.")
 
 if __name__ == "__main__":
     window = Tk()
