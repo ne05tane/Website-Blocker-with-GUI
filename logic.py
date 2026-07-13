@@ -4,14 +4,12 @@ import time
 path_to_host = "C:\Windows\System32\drivers\etc\hosts"
 redirect = "127.0.0.1"
 
-#blocking logic
-
 def block(duration_hours, website_list):
 
     end_time = datetime.datetime.now() + datetime.timedelta(hours=duration_hours)
 
     while True:
-        if datetime.datetime.now < end_time:
+        if datetime.datetime.now < end_time: #blocking phase
             with open(path_to_host, "r+") as fh:
                 content = fh.read()
                 for site in website_list:
