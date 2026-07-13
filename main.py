@@ -102,6 +102,18 @@ class App:
             except ValueError:
                 messagebox.showerror("Invalid Input", "please enter valid hours")
                 return
+            
+            urls = [line.strip() for line in self.url_txt.get("1.0", END).splitlines()
+                    if line.strip()]
+            
+            if not urls:
+                messagebox.showwarning("Missing URLs", "Type in at least one website")
+                return
+            
+            if not messagebox.askyesno('Confirm', f"Block {len(urls)} sites for {hours} hours?"):
+                return
+            
+            
 
 
         
