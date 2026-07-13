@@ -36,12 +36,11 @@ class App:
         
         self.url_txt = ScrolledText(
             self.window,
-            height = 3,
+            height = 5,
             width = 30,
             font = ("Consolas", 14),
             background = "white",
             relief = FLAT,
-            highlightthickness = 2
         
         ) 
 
@@ -79,7 +78,7 @@ class App:
                                  relief = FLAT,
                                  cursor="hand1"
                                 )
-        self.action_btn.pck(fill=X, padx=40,pady = 30)
+        self.action_btn.pack(fill=X, padx=40,pady = 30)
 
         Label(self.window,
               text="You must run as admin",
@@ -88,44 +87,44 @@ class App:
               fg="black"
         ).pack(side=BOTTOM, pady=10)
 
-        def toggle_action(self):
-            if not self.is_blocking:
-                self.start_blocking()
-            else:
-                self.stop_blocking()
+    def toggle_action(self):
+        if not self.is_blocking:
+            self.start_blocking()
+        else:
+            self.stop_blocking()
+    
+    def start_blocking(self):
+        try:
+            hrs= float(self.enter_hours.get())
+            if hrs <= 0:
+                raise ValueError
+        except ValueError:
+            messagebox.showerror("Invalid Input", "please enter valid hours")
+            return
         
-        def start_blocking(self):
-            try:
-                hrs= float(self.enter_hours.get())
-                if hrs <= 0:
-                    raise ValueError
-            except ValueError:
-                messagebox.showerror("Invalid Input", "please enter valid hours")
-                return
-            
-            urls = [line.strip() for line in self.url_txt.get("1.0", END).splitlines()
-                    if line.strip()]
-            
-            if not urls:
-                messagebox.showwarning("Missing URLs", "Type in at least one website")
-                return
-            
-            if not messagebox.askyesno('Confirm', f"Block {len(urls)} sites for {hours} hours?"):
-                return
-            
-            self.stop_event.clear()
-            self.block_thread = threading.Thread(
-                target=logic.block,
-                args=(hrs,urls, self.stop_event ),
-                daemon= True
-            )
-            self.block_thread.start()
+        urls = [line.strip() for line in self.url_txt.get("1.0", END).splitlines()
+                if line.strip()]
+        
+        if not urls:
+            messagebox.showwarning("Missing URLs", "Type in at least one website")
+            return
+        
+        if not messagebox.askyesno('Confirm', f"Block {len(urls)} sites for {hrs} hours?"):
+            return
+        
+        self.stop_event.clear()
+        self.block_thread = threading.Thread(
+            target=logic.block,
+            args=(hrs,urls, self.stop_event ),
+            daemon= True
+        )
+        self.block_thread.start()
 
-            self.is_blocking = True
-            self.timer_label.config(text=f"Blocking for {hrs}h...", fg="light pink")
-            self.action_btn.config(text="Emergency Unblock", bg="white")
-            self.url_txt.config(state=DISABLED)
-            self.enter_hours.config(state=DISABLED)
+        self.is_blocking = True
+        self.timer_label.config(text=f"Blocking for {hrs}h...", fg="light pink")
+        self.action_btn.config(text="Emergency Unblock", bg="white")
+        self.url_txt.config(state=DISABLED)
+        self.enter_hours.config(state=DISABLED)
 
 
     def stop_blocking(self):
