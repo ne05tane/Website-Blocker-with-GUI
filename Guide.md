@@ -48,7 +48,11 @@ Also, we will be creating commits using git commands. If you've never heard of v
 
 Both Hackatime and Git are important to set up if you're doing the YSWS.
 
-### Cloning a repo-
+
+### By initializing a repo -
+
+
+### By cloning a repo-
 
 I will be using VScode as that is what I'm most familiar with. 
 
@@ -56,20 +60,40 @@ I will be using VScode as that is what I'm most familiar with.
 
 On GitHub, create a new repo and name it.
 You can add a README later.
-
+<br><br>
 2) <img width="1267" height="632" alt="Screenshot 2026-07-12 213222" src="https://github.com/user-attachments/assets/bbcf082e-70d6-44f6-a781-3ae77073ada6" />
-
+<br>
 Copy the URL
-
+<br><br>
 3) <img width="1365" height="720" alt="Screenshot 2026-07-12 213631" src="https://github.com/user-attachments/assets/6bea7825-1ebf-432f-9480-5cd519dfe896" />
-
+<br>
 Click on clone repository
+<br><br>
 
 4) <img width="1365" height="721" alt="Screenshot 2026-07-12 214000" src="https://github.com/user-attachments/assets/dda73aff-d855-4677-bb3e-bec45b39a6bd" />
-
-Paste the url in the command center or alternatively, click on the correct repo from the dropdown menu.
+<br>
+Paste the url in the search bar or alternatively, click on the correct repo from the dropdown menu.
+<br><br>
 
 5) <img width="1365" height="719" alt="Screenshot 2026-07-12 214415" src="https://github.com/user-attachments/assets/412a9cd3-7a52-4df5-ae36-875a46e78c95" />
+<br>
+If you've done it right, the command center will display the correct repo's name.
+Click on new file and name it main.py
+<br><br>
+
+## Basics -
+
+<img width="1365" height="719" alt="Screenshot 2026-07-12 214524" src="https://github.com/user-attachments/assets/3645e26f-0c16-4fc5-b9a4-32eb8be29556" />
+<br>
+Yay! Time to make your first commit.
+
+Locate and click on Source Control (The Y-shaped icon). You will see that right now, your main.py file is unstaged so we have to do three steps-stage, commit and push.
+
+In very simplified terms, you essentially wanna take snapshots  <mark>Staging</mark> 
+
+
+
+
 
 
 
