@@ -38,6 +38,19 @@ The GUI simply provides an easy way to add or remove these lines without you nee
 
 So there you have it! Let's start building.
 
+### Remember, you should make your own changes to your project. Question and find out when you're stuck. Do not blindly copy every step, that is the way to learm!
+
+
 ## SetUp -
+
+To start, create a repo either by cloning or by running `git init` in a CLI tool. You must also track it using Hackatime so if you haven't added the extension to your IDE, do it first. PLease go through https://hackatime.hackclub.com/docs if you're new to Hackatime.
+
+### Cloning a repo-
+
+I will be using VScode as that is what I'm most familiar with. 
+
+1)<img width="998" height="641" alt="Screenshot 2026-07-12 213132" src="https://github.com/user-attachments/assets/f9f51054-e3d1-4b94-8792-57a4a1407ed2" />
+
+On GitHub, create a new repo and name it.
 
 
