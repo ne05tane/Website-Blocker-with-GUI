@@ -24,13 +24,13 @@ Okay, now keep that in mind.
 You might know that every device on a network has an IP address. In IPv4 networking, they look like four groups of numbers separated by three periods.
 E.g, <mark>157.240.229.35</mark> for Facebook. 
 
-Your computer has multiple addresses depending on context & one of them, is what you call a <mark>Loopback address</mark>, which is strictly used 
+Your computer has multiple addresses depending on context & one of them, is what you call a "Loopback address", which is strictly used 
 for internal testing. 
 <mark>127.0.0.1</mark> is the standard and most universally recognized loopback address, but it is technically just the first usable address in a 
 massive reserved block that includes *16 million adresses* from <mark>127.0.0.1</mark> to <mark>127.255.255.254</mark>.
 
 The GUI blocker automatically adds lines to this file mapping the unwanted domain to the loopback address. 
-A simple way to do this is just by writing 127.0.0.1 next to the website like - <mark>127.0.0.1</mark> www.instagram.com
+A simple way to do this is just by writing 127.0.0.1 next to the website like - 127.0.0.1 www.instagram.com
 
 Your computer tries to connect to itself instead of the real website, and unless it is somehow running an instagram server locally, the connection fails and the site appears blocked.
 
