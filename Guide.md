@@ -4,7 +4,6 @@ author: ne05tane
 description:  A software application that allows users to restrict access to specific websites through a visual interface
 created_at: 7-15-2026
 ---
-### Submitted as a guide for jus'Study - A Hack Club "You Ship We Ship" event
 
 ## Intro - 
 
@@ -45,6 +44,10 @@ So there you have it! Let's start building.
 
 To start, create a repo either by cloning or by running `git init` in a CLI tool. You must also track it using Hackatime so if you haven't added the extension to your IDE, do it first. PLease go through https://hackatime.hackclub.com/docs if you're new to Hackatime.
 
+Also, we will be creating commits using git commands. If you've never heard of version control, I suggest making a quick search but I will be explaining everything. The only thing you need to do is install Git first (if you haven't already).
+
+Both Hackatime and Git are important to set up if you're doing the YSWS.
+
 ### Cloning a repo-
 
 I will be using VScode as that is what I'm most familiar with. 
@@ -52,5 +55,25 @@ I will be using VScode as that is what I'm most familiar with.
 1)<img width="998" height="641" alt="Screenshot 2026-07-12 213132" src="https://github.com/user-attachments/assets/f9f51054-e3d1-4b94-8792-57a4a1407ed2" />
 
 On GitHub, create a new repo and name it.
+You can add a README later.
+
+2) <img width="1267" height="632" alt="Screenshot 2026-07-12 213222" src="https://github.com/user-attachments/assets/bbcf082e-70d6-44f6-a781-3ae77073ada6" />
+
+Copy the URL
+
+3) <img width="1365" height="720" alt="Screenshot 2026-07-12 213631" src="https://github.com/user-attachments/assets/6bea7825-1ebf-432f-9480-5cd519dfe896" />
+
+Click on clone repository
+
+4) <img width="1365" height="721" alt="Screenshot 2026-07-12 214000" src="https://github.com/user-attachments/assets/dda73aff-d855-4677-bb3e-bec45b39a6bd" />
+
+Paste the url in the command center or alternatively, click on the correct repo from the dropdown menu.
+
+5) <img width="1365" height="719" alt="Screenshot 2026-07-12 214415" src="https://github.com/user-attachments/assets/412a9cd3-7a52-4df5-ae36-875a46e78c95" />
+
+
+
+
+
 
 
