@@ -153,13 +153,16 @@ You can check your remote repository to see if it shows up.
 
 <img width="1363" height="683" alt="Screenshot 2026-07-12 221111" src="https://github.com/user-attachments/assets/7acfdbd2-ff85-4275-bebd-ab10315a389a" />
 <br>
+
 Use the methods above to modify your window.
 `window.mainloop()` keeps the GUI window open and responsive to user interactions. So we will add code in between later while putting this loop towards the end.
 <br><br>
 
 <img width="1365" height="721" alt="Screenshot 2026-07-12 221125" src="https://github.com/user-attachments/assets/5c2d9e19-7b56-42f7-a375-1ff684948ccc" />
 <br>
-This is what it looks like when you run it and as you can see, it kind of looks weird so you can modify the dimensions in `window.geometry()`
+
+This is what it looks like when you run it and as you can see, it kind of looks weird
+so you can modify the dimensions in `window.geometry()`
 <br><br>
 
 <img width="1365" height="682" alt="Screenshot 2026-07-12 221219" src="https://github.com/user-attachments/assets/c7cba96d-ba78-4e97-94b3-4eea673fbb22" />
@@ -180,8 +183,10 @@ Locate the hosts file in your system and copy the path.
 
 <img width="1360" height="525" alt="Screenshot 2026-07-12 233524" src="https://github.com/user-attachments/assets/490b089d-afce-4f2c-9473-dfb6434b7032" />
 <br>
+
 Next write the blocking logic. I did this by creating a function with the same name that will take two arguments- `duration_hours` & `website_list`
 As the name says, one will hold a list of websites and the other will ask for the time duration that you want them blocked. 
+
 
 Then we define endtime to be a difference between your current local time and the duration that you enter. 
 Simply add `datetime.datetime.now` (a class method that returns a datetime object representing the current local date and time based on the system clock. ) to `datetime.timedelta()` (represents a duration or difference between two dates or times, rather than a specific point in time.)
@@ -193,6 +198,16 @@ write it down.
 
 If you remember in the intro, I explained we could do this by writing "127.0.0.1 www.instagram.com" for example. 
 Can you see how `fh.write(redirect  + " " + site "\n"` does that? 
+<br><br>
+
+<img width="919" height="520" alt="Screenshot 2026-07-12 235646" src="https://github.com/user-attachments/assets/3870ca9e-6602-4662-8ce8-86dacd2c2bc4" />
+<br>
+
+Then the else block (datetime.datetime.now > end_time) will execute the unblocking phase, you can see how it's done above but I encourage you try to figure it out yourself.
+
+At last, time.sleep() pauses the execution of the current thread for a specified number of seconds. I later changed it from 30 seconds to something shorter. I did this to pause execution between checks or the script would consume 100% of the CPU cause the while loop would run infinitely fast, so you have to place it *inside* the while loop.
+<br><br>
+
 
 
 
