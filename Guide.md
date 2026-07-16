@@ -49,10 +49,7 @@ Also, we will be creating commits using git commands. If you've never heard of v
 Both Hackatime and Git are important to set up if you're doing the YSWS.
 
 
-### By initializing a repo -
-
-
-### By cloning a repo-
+### Cloning a repo-
 
 I will be using VScode as that is what I'm most familiar with. 
 
@@ -89,7 +86,47 @@ Yay! Time to make your first commit.
 
 Locate and click on Source Control (The Y-shaped icon). You will see that right now, your main.py file is unstaged so we have to do three steps-stage, commit and push.
 
-In very simplified terms, you essentially wanna take snapshots  <mark>Staging</mark> 
+In very simplified terms, you essentially wanna take snapshots of your code. This helps you undo mistakes and revert to previous versions if errors occur and as mentioned above, you might need to install git first.
+
+<mark>Stage</mark> means to choose specific changes from your working directory to include in the next snapshot. We have so far only created 
+main.py and nothing else. You can choose to write some code or stage it now itself through two ways :-
+
+1) Click on the plus icon as highlighted in the picture above.
+                    OR
+2) Open the terminal in your editor and run `git add main.py`
+
+<img width="1365" height="722" alt="Screenshot 2026-07-12 214609" src="https://github.com/user-attachments/assets/706cf9da-3916-468e-9a72-aad236b8e91c" />
+
+Notice in source control, the file you staged is now under staged changes. This prepares it for the next step - <mark>Commit</mark>
+Committing saves a permanent snapshot to your *local* repository history. I say local becuse these changes remain private to your local machine.
+
+However, we need to make our code visible to other developers. This is done through the next step <mark>push</mark> but first we learn to commit.
+
+In the picture above, I wrote "init", short for initialization. Only committing those snapshots isn't helpful, so we write a message alongside it.
+For example, you think a block of code you've written is not needed. So you delete it, save your modified file, run `git add` (staging) and write a concise message explaining your step - "remove redundant code".
+
+This is what I did. I initialized a new python file and now I wanna save this snapshot in history so I explained my step - "init"
+Once you write init, click on commit and tada! you've just made your first commit.
+
+Just like `git add`, another way to commit is by using the terminal to run `git commit -m "Your message"` 
+
+<img width="1365" height="477" alt="Screenshot 2026-07-12 214747" src="https://github.com/user-attachments/assets/882b727e-a3e5-450c-98c0-c5cd98173ca4" />
+
+For this last step, you have to use the terminal. Locate the terminal in your editor and write `git push`. Earlier, I said committing only saves your changes locally, but <mark>pushing</mark> shares them to a remote repository like GitHub. This serves as cloud backup and other people can learn from your code. 
+
+These three commands have to be done in the exact same order. You have to decide what to commit and when to commit (which is very frequently, after every meaningful change). 
+
+`git add .` The dot after `add` means stage *all* files and changes.
+`git commit -m "message"` 
+`git push`
+
+## Using tkinter - 
+
+
+
+
+
+
 
 
 
