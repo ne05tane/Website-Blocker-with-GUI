@@ -58,21 +58,23 @@ I will be using VScode as that is what I'm most familiar with.
 On GitHub, create a new repo and name it.
 You can add a README later.
 <br><br>
-2) <img width="1267" height="632" alt="Screenshot 2026-07-12 213222" src="https://github.com/user-attachments/assets/bbcf082e-70d6-44f6-a781-3ae77073ada6" />
+
+2)<img width="1267" height="632" alt="Screenshot 2026-07-12 213222" src="https://github.com/user-attachments/assets/bbcf082e-70d6-44f6-a781-3ae77073ada6" />
 <br>
 Copy the URL
 <br><br>
-3) <img width="1365" height="720" alt="Screenshot 2026-07-12 213631" src="https://github.com/user-attachments/assets/6bea7825-1ebf-432f-9480-5cd519dfe896" />
+
+3)<img width="1365" height="720" alt="Screenshot 2026-07-12 213631" src="https://github.com/user-attachments/assets/6bea7825-1ebf-432f-9480-5cd519dfe896" />
 <br>
 Click on clone repository
 <br><br>
 
-4) <img width="1365" height="721" alt="Screenshot 2026-07-12 214000" src="https://github.com/user-attachments/assets/dda73aff-d855-4677-bb3e-bec45b39a6bd" />
+4)<img width="1365" height="721" alt="Screenshot 2026-07-12 214000" src="https://github.com/user-attachments/assets/dda73aff-d855-4677-bb3e-bec45b39a6bd" />
 <br>
 Paste the url in the search bar or alternatively, click on the correct repo from the dropdown menu.
 <br><br>
 
-5) <img width="1365" height="719" alt="Screenshot 2026-07-12 214415" src="https://github.com/user-attachments/assets/412a9cd3-7a52-4df5-ae36-875a46e78c95" />
+5)<img width="1365" height="719" alt="Screenshot 2026-07-12 214415" src="https://github.com/user-attachments/assets/412a9cd3-7a52-4df5-ae36-875a46e78c95" />
 <br>
 If you've done it right, the command center will display the correct repo's name.
 Click on new file and name it main.py
@@ -81,7 +83,7 @@ Click on new file and name it main.py
 ## Basics -
 
 <img width="1365" height="719" alt="Screenshot 2026-07-12 214524" src="https://github.com/user-attachments/assets/3645e26f-0c16-4fc5-b9a4-32eb8be29556" />
-<br>
+<br><br>
 Yay! Time to make your first commit.
 
 Locate and click on Source Control (The Y-shaped icon). You will see that right now, your main.py file is unstaged so we have to do three steps-stage, commit and push.
@@ -95,8 +97,11 @@ main.py and nothing else. You can choose to write some code or stage it now itse
                     OR
 2) Open the terminal in your editor and run `git add main.py`
 
+<br><br>
+
 <img width="1365" height="722" alt="Screenshot 2026-07-12 214609" src="https://github.com/user-attachments/assets/706cf9da-3916-468e-9a72-aad236b8e91c" />
 
+<br><br>
 Notice in source control, the file you staged is now under staged changes. This prepares it for the next step - <mark>Commit</mark>
 Committing saves a permanent snapshot to your *local* repository history. I say local becuse these changes remain private to your local machine.
 
@@ -110,17 +115,37 @@ Once you write init, click on commit and tada! you've just made your first commi
 
 Just like `git add`, another way to commit is by using the terminal to run `git commit -m "Your message"` 
 
+<br><br>
+
 <img width="1365" height="477" alt="Screenshot 2026-07-12 214747" src="https://github.com/user-attachments/assets/882b727e-a3e5-450c-98c0-c5cd98173ca4" />
+<br><br>
 
-For this last step, you have to use the terminal. Locate the terminal in your editor and write `git push`. Earlier, I said committing only saves your changes locally, but <mark>pushing</mark> shares them to a remote repository like GitHub. This serves as cloud backup and other people can learn from your code. 
-
-These three commands have to be done in the exact same order. You have to decide what to commit and when to commit (which is very frequently, after every meaningful change). 
+For this last step, you have to use the terminal. Locate the terminal in your editor and write `git push`. Earlier, I said committing only saves your changes locally, but <mark>pushing</mark> shares them to a remote repository like GitHub. This serves as cloud backup and other people can learn from your code. You should remember the following three commands in order and remember to commit frequently!
 
 `git add .` The dot after `add` means stage *all* files and changes.
-`git commit -m "message"` 
+`git commit -m "message"` & 
 `git push`
 
+<br><br>
+
 ## Using tkinter - 
+
+It is better to keep the blocking logic and graphical interface separate. Our main.py will contain the GUI. You can actually skip to the part where we initialize logic.py but I wanted to make a window first (The rectangle box that has all your widgets like buttons and images)
+
+<img width="1365" height="710" alt="Screenshot 2026-07-12 215250" src="https://github.com/user-attachments/assets/06960285-2fcb-463b-b853-0467a67c9bf3" />
+<br><br>
+The `*` in `from tkinter import *` means all.
+To instantiate a window, write `window = Tk()`
+
+Save your file, use the three git commands in order or use the source control sidebar to commit and push.
+<br><br>
+
+<img width="1365" height="691" alt="Screenshot 2026-07-12 215433" src="https://github.com/user-attachments/assets/97d10863-191b-4840-b0fb-d038d0e1c0eb" />
+<br>
+This is what the terminal looks like after everything
+<br><br>
+
+
 
 
 
