@@ -215,7 +215,18 @@ Remember to commit!
 <img width="993" height="686" alt="Screenshot 2026-07-13 003742" src="https://github.com/user-attachments/assets/0a23dd0c-2c11-4f90-a580-086851f6acb1" />
 <br>
 
-Back to main.py, we will import threading and our logic.py file
+Back to main.py, we will import threading and our logic.py file.
+
+We define a class `App` that will encapsulate the logic, state and widgets. The dunder method right below it is a special function that Python automatically executes the moment you create a new instance of the class.
+
+In the context of Tkinter, root is the main window or the top-level container for your entire application. Notice though, that in
+`def __init__(self, window)`, I named my root variable `window` because I didn't need to differentiate between a main window or other windows. 
+However, the standard is to just name it `root`.
+
+If you name it root, you will write `self.root` instead of `self.window`. Also, if you've created the window earlier, you will need to put the methods inside this class app as in the picture.
+
+<br><br>
+<img width="1189" height="680" alt="Screenshot 2026-07-13 073910" src="https://github.com/user-attachments/assets/164ab4a6-c777-4d8a-9037-7f6ce03923fa" />
 
 
 
