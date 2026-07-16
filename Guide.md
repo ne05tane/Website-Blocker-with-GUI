@@ -206,7 +206,18 @@ Can you see how `fh.write(redirect  + " " + site "\n"` does that?
 Then the else block (datetime.datetime.now > end_time) will execute the unblocking phase, you can see how it's done above but I encourage you try to figure it out yourself.
 
 At last, time.sleep() pauses the execution of the current thread for a specified number of seconds. I later changed it from 30 seconds to something shorter. I did this to pause execution between checks or the script would consume 100% of the CPU cause the while loop would run infinitely fast, so you have to place it *inside* the while loop.
+
+Remember to commit!
 <br><br>
+
+## GUI -
+
+<img width="993" height="686" alt="Screenshot 2026-07-13 003742" src="https://github.com/user-attachments/assets/0a23dd0c-2c11-4f90-a580-086851f6acb1" />
+<br>
+
+Back to main.py, we will import threading and our logic.py file
+
+
 
 
 
