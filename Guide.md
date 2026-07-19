@@ -241,7 +241,52 @@ Thus, you must also put `window.mainloop()` inside the `if__name__== "__main__"`
 
 *It is `root.mainloop()` if you have named your root variable root!*
 
-Create 
+The rest is easy to understand:-
+1. Write `window=Tk()` or `root=Tk()` to initialize the main application window. Basically, this will contain all your widgets and labels.
+2. `app=App(window)` or `app=App(root)`
+3. Finally, `window.mainloop()` or `root.mainloop()` to run the window. 
+
+`def _setup_ui(self):` _setup_ui only has single underscores, not to be confused with special functions like `__init__` which have double underscores.
+
+Then `tk.label()` creates a label, basically a button which im going to name focus. Then you can modify that button using attributes such as `font=(<fontname>, <fontsize>, <style>)`, `background` & `foreground`. Then you need to pack all these attributes using   `self.timer.pack`. Use pady to make changes in the y direction aka make the button have greater width for example 20px. Similarly, use padx aka padding in the x direction to change the length of the label.
+<br><br>
+
+<img width="1365" height="567" alt="Screenshot 2026-07-13 080225" src="https://github.com/user-attachments/assets/4e3d6386-639d-495f-81ee-421ddd7ccf9a" />
+You can make as many labels as you want and modify them using the above attributes.
+<br><br>
+
+<img width="1365" height="687" alt="Screenshot 2026-07-13 075746" src="https://github.com/user-attachments/assets/e01080dd-85b8-4490-9c84-94d62f4d7311" />
+You can save and run to see how it looks so far. 
+It's very basic and you can change it to your liking
+<br><br>
+
+<img width="1365" height="588" alt="Screenshot 2026-07-13 081006" src="https://github.com/user-attachments/assets/2afea515-8588-4fb2-8161-c62422f043a3" />
+We're gonna import another scrolledtext from tkinter as well. 
+<br><br>
+
+<img width="720" height="542" alt="Screenshot 2026-07-13 081506" src="https://github.com/user-attachments/assets/4d74e93a-997b-4d1d-8216-af8415c92922" />
+
+Copy what I've written to create a text box that can scroll.
+<br><br>
+
+<img width="1182" height="574" alt="Screenshot 2026-07-13 082144" src="https://github.com/user-attachments/assets/40196ae4-9a1a-4c95-a24b-2c96ac4eff35" />
+I would like to change the box's dimensions
+<br><br>
+
+<img width="1365" height="650" alt="Screenshot 2026-07-13 092206" src="https://github.com/user-attachments/assets/2adc24e1-70b2-4ce9-8fb6-47f6c67d60eb" />
+You can make your own changes to settle on what you like.
+
+## Time to Ship -
+
+
+
+
+
+
+
+
+
+
 
 
 
