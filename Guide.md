@@ -44,7 +44,7 @@ So there you have it! Let's start building.
 
 To start, create a repo either by cloning or by running `git init` in a CLI tool. You must also track it using Hackatime so if you haven't added the extension to your IDE, do it first. PLease go through https://hackatime.hackclub.com/docs if you're new to Hackatime.
 
-Also, we will be creating commits using git commands. If you've never heard of version control, I suggest making a quick search but I will be explaining everything. The only thing you need to do is install Git first (if you haven't already).
+Also, we will be creating commits using git commands. If you've never heard of version control, I suggest making a quick search but I will also be explaining everything. The only thing you need to do is install Git first (if you haven't already).
 
 Both Hackatime and Git are important to set up if you're doing the YSWS.
 
@@ -102,7 +102,7 @@ main.py and nothing else. You can choose to write some code or stage it now itse
 <img width="1365" height="722" alt="Screenshot 2026-07-12 214609" src="https://github.com/user-attachments/assets/706cf9da-3916-468e-9a72-aad236b8e91c" />
 
 <br><br>
-Notice in source control, the file you staged is now under staged changes. This prepares it for the next step - <mark>Commit</mark>
+Notice in source control, the file you staged is now under staged changes. This prepares it for the next step - <mark>Commit</mark>. </n>
 Committing saves a permanent snapshot to your *local* repository history. I say local becuse these changes remain private to your local machine.
 
 However, we need to make our code visible to other developers. This is done through the next step <mark>push</mark> but first we learn to commit.
@@ -172,8 +172,8 @@ If you're happy with how it looks, you can go ahead and stage and commit.
 
 <img width="964" height="308" alt="Screenshot 2026-07-12 224853" src="https://github.com/user-attachments/assets/88c1dc88-5157-4c74-a2f5-c7284378dbca" />
 <br>
-Next we're gonna initialise logic.py and import datetime and time modules.
-Create two variables as in the picture. One will hold the directory to our hosts file and the second the loopback address.
+Next we're gonna initialise (create a new file) logic.py and import datetime and time modules.
+Create two variables as in the picture. One will hold the directory to our hosts file and the second - the loopback address.
 <br><br>
 
 <img width="1348" height="665" alt="Screenshot 2026-07-12 225010" src="https://github.com/user-attachments/assets/30d6d8b5-22d5-4ab5-83f0-dbd4744cc1a7" />
@@ -187,9 +187,12 @@ Locate the hosts file in your system and copy the path.
 Next write the blocking logic. I did this by creating a function with the same name that will take two arguments- `duration_hours` & `website_list`
 As the name says, one will hold a list of websites and the other will ask for the time duration that you want them blocked. 
 
+Then we define <mark>endtime</mark> to be a difference between your current local time and the duration that you enter. 
+Simply add `datetime.datetime.now` to `datetime.timedelta()`
 
-Then we define endtime to be a difference between your current local time and the duration that you enter. 
-Simply add `datetime.datetime.now` (a class method that returns a datetime object representing the current local date and time based on the system clock. ) to `datetime.timedelta()` (represents a duration or difference between two dates or times, rather than a specific point in time.)
+The first one is a class method that returns a datetime object representing the current local date and time based on the system clock. 
+The second one represents a duration or difference between two dates or times, rather than a specific point in time.
+
 Name the variable that will hold duration_hours for example, hours like I did above.
 
 The rest of the code basically says as long as the current date and time (which keeps updating every moment) is less than end time, open
@@ -197,15 +200,17 @@ the hosts file in read and write mode, pass if the site in our list of urls (whi
 write it down. 
 
 If you remember in the intro, I explained we could do this by writing "127.0.0.1 www.instagram.com" for example. 
-Can you see how `fh.write(redirect  + " " + site "\n"` does that? 
+Can you try to figure out how `fh.write(redirect  + " " + site "\n"` does that? 
 <br><br>
 
 <img width="919" height="520" alt="Screenshot 2026-07-12 235646" src="https://github.com/user-attachments/assets/3870ca9e-6602-4662-8ce8-86dacd2c2bc4" />
 <br>
 
-Then the else block (datetime.datetime.now > end_time) will execute the unblocking phase, you can see how it's done above but I encourage you try to figure it out yourself.
+Then the else block (datetime.datetime.now > end_time) will execute the unblocking phase, you can see how it's done above but I encourage you try to figure it out yourself FIRST.
 
-At last, time.sleep() pauses the execution of the current thread for a specified number of seconds. I later changed it from 30 seconds to something shorter. I did this to pause execution between checks or the script would consume 100% of the CPU cause the while loop would run infinitely fast, so you have to place it *inside* the while loop.
+At last, time.sleep() pauses the execution of the current thread for a specified number of seconds. I later changed it from 30 seconds to something shorter.
+
+I recommend you do this to pause execution between checks or the script would consume 100% of the CPU cause the while loop would run infinitely fast! This is the only instance in the code where time module is used. So if you don't want to implement `time.sleep()`, you doon't need to `import time`. However, for the reasons I mentioned, it is highly suggested you do use this.
 
 Remember to commit!
 <br><br>
@@ -223,14 +228,23 @@ In the context of Tkinter, root is the main window or the top-level container fo
 `def __init__(self, window)`, I named my root variable `window` because I didn't need to differentiate between a main window or other windows. 
 However, the standard is to just name it `root`.
 
-If you name it root, you will write `self.root` instead of `self.window`. Previously, if you've created the window, you will need to put the methods inside this class app as in the picture.
+If you name it root, you will write `self.root` instead of `self.window`. 
+
+If you created the window first in main.py, you will need to put the methods inside this class app as in the picture.
 
 <br><br>
 <img width="1189" height="680" alt="Screenshot 2026-07-13 073910" src="https://github.com/user-attachments/assets/164ab4a6-c777-4d8a-9037-7f6ce03923fa" />
 
 <br>
 
-That means you have to shift `window.mainloop()` (or `root.mainloop()`) inside the `if __name__` block to the very end.
+Thus, you must also put `window.mainloop()` inside the `if__name__== "__main__"` block to the very end.
+
+*It is `root.mainloop()` if you have named your root variable root!*
+
+Create 
+
+
+
 
 
 
