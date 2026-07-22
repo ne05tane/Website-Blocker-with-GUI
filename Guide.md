@@ -247,10 +247,12 @@ Remember to commit!
 
 <img width="993" height="686" alt="Screenshot 2026-07-13 003742" src="https://github.com/user-attachments/assets/0a23dd0c-2c11-4f90-a580-086851f6acb1" />
 
-<br>
-Back to main.py, we will import threading and our logic.py file.
+<br><br>
+Back to main.py, we will `import threading` and our logic.py file.
 
-We define a class `App` that will encapsulate the logic, state and widgets. The dunder method right below it is a special function that Python automatically executes the moment you create a new instance of the class.
+To plagiarize, <mark> "the threading module is a built-in Python library that provides a higher-level interface for creating and managing threads, allowing multiple operations to run concurrently within the same process.  It is designed primarily for I/O-bound tasks (like web scraping or file operations) where the program spends time waiting for external resources" </mark>
+
+Then we define a class `App` that will encapsulate the logic, state and widgets. The dunder (double underscore) method right below it is a special function that Python automatically executes the moment you create a new instance of the class.
 
 In the context of Tkinter, root is the main window or the top-level container for your entire application. Notice though, that in
 `def __init__(self, window)`, I named my root variable `window` because I didn't need to differentiate between a main window or other windows. 
@@ -258,12 +260,12 @@ However, the standard is to just name it `root`.
 
 If you name it root, you will write `self.root` instead of `self.window`. 
 
-If you created the window first in main.py, you will need to put the methods inside this class app as in the picture.
+Also, if you had earlier created the window, the methods you used to change its size and position will all have `self` added in front. (see above) 
 
 <br><br>
 <img width="1189" height="680" alt="Screenshot 2026-07-13 073910" src="https://github.com/user-attachments/assets/164ab4a6-c777-4d8a-9037-7f6ce03923fa" />
 
-<br>
+<br><br>
 
 Thus, you must also put `window.mainloop()` inside the `if__name__== "__main__"` block to the very end.
 
@@ -280,29 +282,35 @@ Then `tk.label()` creates a label, basically a button which im going to name foc
 <br><br>
 
 <img width="1365" height="567" alt="Screenshot 2026-07-13 080225" src="https://github.com/user-attachments/assets/4e3d6386-639d-495f-81ee-421ddd7ccf9a" />
+<br><br>
 You can make as many labels as you want and modify them using the above attributes.
 <br><br>
 
 <img width="1365" height="687" alt="Screenshot 2026-07-13 075746" src="https://github.com/user-attachments/assets/e01080dd-85b8-4490-9c84-94d62f4d7311" />
+<br><br>
 You can save and run to see how it looks so far. 
 It's very basic and you can change it to your liking
 <br><br>
 
 <img width="1365" height="588" alt="Screenshot 2026-07-13 081006" src="https://github.com/user-attachments/assets/2afea515-8588-4fb2-8161-c62422f043a3" />
+<br><br>
 We're gonna import another scrolledtext from tkinter as well. 
 <br><br>
 
 <img width="720" height="542" alt="Screenshot 2026-07-13 081506" src="https://github.com/user-attachments/assets/4d74e93a-997b-4d1d-8216-af8415c92922" />
-
+<br><br>
 Copy what I've written to create a text box that can scroll.
 <br><br>
 
 <img width="1182" height="574" alt="Screenshot 2026-07-13 082144" src="https://github.com/user-attachments/assets/40196ae4-9a1a-4c95-a24b-2c96ac4eff35" />
+<br><br>
 I would like to change the box's dimensions
 <br><br>
 
 <img width="1365" height="650" alt="Screenshot 2026-07-13 092206" src="https://github.com/user-attachments/assets/2adc24e1-70b2-4ce9-8fb6-47f6c67d60eb" />
+<br><br>
 You can make your own changes to settle on what you like.
+<br><br><br>
 
 ## Time to Ship -
 
