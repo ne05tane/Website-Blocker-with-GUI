@@ -135,8 +135,12 @@ It is better to keep the blocking logic and graphical interface separate. Our ma
 <img width="1365" height="710" alt="Screenshot 2026-07-12 215250" src="https://github.com/user-attachments/assets/06960285-2fcb-463b-b853-0467a67c9bf3" />
 <br><br>
 
-The `*` in `from tkinter import *` means all.
-To instantiate a window, write `window = Tk()`
+We start by importing tkinter to build our graphical interface. There are many ways you can do this:- 
+1. `import tkinter`
+2. `from tkinter import * ` (meaning from tkinter import all)
+3. `import tkinter as tk` - tk is the alias or shorthand for tkinter. This is useful for when you need to  access the module's classes and functions using a shorter prefix.
+
+Next, `window=Tk()` instantiates the root window (the main container that holds you buttons, widgets and labels)
 
 Save your file, use the three git commands in order or use the source control sidebar to commit and push.
 <br><br>
