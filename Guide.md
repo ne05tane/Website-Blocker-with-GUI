@@ -298,6 +298,14 @@ You can save and run to see how it looks so far.
 It's very basic and you can change it to your liking
 <br><br>
 
+<img width="957" height="496" alt="Screenshot 2026-07-22 144719" src="https://github.com/user-attachments/assets/776b4fe6-69d1-4aa1-b2c7-7321e165202b" />
+<img width="977" height="390" alt="Screenshot 2026-07-22 144707" src="https://github.com/user-attachments/assets/ce761eb0-877e-49b9-9594-3a16fb366164" />
+<img width="1015" height="520" alt="Screenshot 2026-07-22 144648" src="https://github.com/user-attachments/assets/f6f3e1d7-8027-4cd8-a6a9-d4c7691d3006" />
+<img width="1365" height="461" alt="Screenshot 2026-07-22 144624" src="https://github.com/user-attachments/assets/b5ced9b1-9929-4995-a9de-30132ac8cfc2" />
+<img width="1365" height="550" alt="Screenshot 2026-07-22 144604" src="https://github.com/user-attachments/assets/827c3fdd-189e-4df9-80c5-e6a75dc62325" />
+<img width="1364" height="476" alt="Screenshot 2026-07-22 144539" src="https://github.com/user-attachments/assets/0d0ac9ed-b175-4401-8879-e4cfdd383f80" />
+
+
 <img width="1365" height="588" alt="Screenshot 2026-07-13 081006" src="https://github.com/user-attachments/assets/2afea515-8588-4fb2-8161-c62422f043a3" />
 <br><br>
 We're gonna import another scrolledtext from tkinter as well. 
