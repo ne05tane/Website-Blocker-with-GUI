@@ -146,65 +146,77 @@ Save your file, use the three git commands in order or use the source control si
 <br><br>
 
 <img width="1365" height="691" alt="Screenshot 2026-07-12 215433" src="https://github.com/user-attachments/assets/97d10863-191b-4840-b0fb-d038d0e1c0eb" />
-<br>
-This is what the terminal looks like after everything
 <br><br>
+This is what the terminal looks like after everything
+<br><br><br>
 
 <img width="1365" height="641" alt="Screenshot 2026-07-12 215827" src="https://github.com/user-attachments/assets/10b13699-a600-4446-ac87-74717a48fb7b" />
-<br>
-You can check your remote repository to see if it shows up. 
 <br><br>
+You can check your remote repository to see if it shows up. 
+<br><br><br>
 
 <img width="1363" height="683" alt="Screenshot 2026-07-12 221111" src="https://github.com/user-attachments/assets/7acfdbd2-ff85-4275-bebd-ab10315a389a" />
-<br>
+<br><br>
+To define the window's size, we use the method `window.geometry("widthxheight")`. You must enter the values in pixels. 
 
-Use the methods above to modify your window.
-`window.mainloop()` keeps the GUI window open and responsive to user interactions. So we will add code in between later while putting this loop towards the end.
+YOu can even define its position: `window.geometry("widthxheight+x+y)` for example,  `window.geometry("300x200+100+50")` sets the size to 300x200 and positions the top-left corner at x=100, y=50. 
+
+Negative Coordinates: Using negative values (e.g., "-50-50") positions the window relative to the bottom-right edge of the screen.
+
+But most importantly, you must call `window.loop(`) to start the event loop aka, keeping the application responsive and to actually display the window. If you try running main.py and for some reason, your root window does not show up, make sure to check if you've called it correctly.
 <br><br>
 
 <img width="1365" height="721" alt="Screenshot 2026-07-12 221125" src="https://github.com/user-attachments/assets/5c2d9e19-7b56-42f7-a375-1ff684948ccc" />
-<br>
-
+<br><br>
 This is what it looks like when you run it and as you can see, it kind of looks weird
 so you can modify the dimensions in `window.geometry()`
 <br><br>
 
 <img width="1365" height="682" alt="Screenshot 2026-07-12 221219" src="https://github.com/user-attachments/assets/c7cba96d-ba78-4e97-94b3-4eea673fbb22" />
-<br>
+<br><br>
 If you're happy with how it looks, you can go ahead and stage and commit.
 <br><br>
 
 <img width="964" height="308" alt="Screenshot 2026-07-12 224853" src="https://github.com/user-attachments/assets/88c1dc88-5157-4c74-a2f5-c7284378dbca" />
-<br>
-Next we're gonna initialise (create a new file) logic.py and import datetime and time modules.
+<br><br>
+Next we're gonna initialise logic.py and import datetime and time modules.
 Create two variables as in the picture. One will hold the directory to our hosts file and the second - the loopback address.
 <br><br>
 
 <img width="1348" height="665" alt="Screenshot 2026-07-12 225010" src="https://github.com/user-attachments/assets/30d6d8b5-22d5-4ab5-83f0-dbd4744cc1a7" />
-<br>
+<br><br>
 Locate the hosts file in your system and copy the path. 
 <br><br>
 
 <img width="1360" height="525" alt="Screenshot 2026-07-12 233524" src="https://github.com/user-attachments/assets/490b089d-afce-4f2c-9473-dfb6434b7032" />
-<br>
-
+<br><br>
 Next write the blocking logic. I did this by creating a function with the same name that will take two arguments- `duration_hours` & `website_list`
 As the name says, one will hold a list of websites and the other will ask for the time duration that you want them blocked. 
 
 Then we define <mark>endtime</mark> to be a difference between your current local time and the duration that you enter. 
 Simply add `datetime.datetime.now` to `datetime.timedelta()`
 
-The first one is a class method that returns a datetime object representing the current local date and time based on the system clock. 
-The second one represents a duration or difference between two dates or times, rather than a specific point in time.
+`datetime.datetime.now` is a class method that returns a datetime object representing the current local date and time based on the system clock. 
+`datetime.timedelta()` represents a duration or difference between two dates or times, rather than a specific point in time.
 
 Name the variable that will hold duration_hours for example, hours like I did above.
 
-The rest of the code basically says as long as the current date and time (which keeps updating every moment) is less than end time, open
-the hosts file in read and write mode, pass if the site in our list of urls (which we will define in main.py) is in the file content and if not,
-write it down. 
+If you know how to work with file handling operations in python, the next steps are easy,
 
-If you remember in the intro, I explained we could do this by writing "127.0.0.1 www.instagram.com" for example. 
+In the `While True:` block, it basically says,
+
+IF the current date and time (`datetime.datetime.now`) is less than our defined endtime, open the hosts file in "read and write" mode (`r+`) using a shorthand (`fh` as I named it but you can use `fo`, short for file object) and run the following instructions:-
+
+ 1. <mark> Read the whole thing </mark> {`content = fh.read()` OR `fo.read()`}
+ 2. <mark> Ignore if a site we want blocked is already there</mark> (`for site in website_list:`....`pass`)
+ 3. <mark> Else write it down in the hosts file so we can block it</mark>
+
+If you remember in the intro, I explained we could do the last step by writing "127.0.0.1 www.instagram.com" for example.
+
 Can you try to figure out how `fh.write(redirect  + " " + site "\n"` does that? 
+
+Also note, `r` opens the file in "read mode", `w` in "write mode", `a` in "append mode", `r+` in "read and write" mode etc. 
+We want to be able to both read and write in our file.
 <br><br>
 
 <img width="919" height="520" alt="Screenshot 2026-07-12 235646" src="https://github.com/user-attachments/assets/3870ca9e-6602-4662-8ce8-86dacd2c2bc4" />
