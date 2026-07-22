@@ -245,12 +245,14 @@ Remember to commit!
 
 ## GUI -
 
+<insert wireframe>
+
 <img width="993" height="686" alt="Screenshot 2026-07-13 003742" src="https://github.com/user-attachments/assets/0a23dd0c-2c11-4f90-a580-086851f6acb1" />
 
 <br><br>
 Back to main.py, we will `import threading` and our logic.py file.
 
-To plagiarize, <mark> "the threading module is a built-in Python library that provides a higher-level interface for creating and managing threads, allowing multiple operations to run concurrently within the same process.  It is designed primarily for I/O-bound tasks (like web scraping or file operations) where the program spends time waiting for external resources" </mark>
+I'm gonna plagiarize the definition, <mark> "the threading module is a built-in Python library that provides a higher-level interface for creating and managing threads, allowing multiple operations to run concurrently within the same process.  It is designed primarily for I/O-bound tasks (like web scraping or file operations) where the program spends time waiting for external resources" </mark>
 
 Then we define a class `App` that will encapsulate the logic, state and widgets. The dunder (double underscore) method right below it is a special function that Python automatically executes the moment you create a new instance of the class.
 
@@ -262,12 +264,15 @@ If you name it root, you will write `self.root` instead of `self.window`.
 
 Also, if you had earlier created the window, the methods you used to change its size and position will all have `self` added in front. (see above) 
 
+Lastly, copy the last three methods just before `self._setup_ui()`. They will be explained later below.
+
+
 <br><br>
 <img width="1189" height="680" alt="Screenshot 2026-07-13 073910" src="https://github.com/user-attachments/assets/164ab4a6-c777-4d8a-9037-7f6ce03923fa" />
 
 <br><br>
 
-Thus, you must also put `window.mainloop()` inside the `if__name__== "__main__"` block to the very end.
+You must also put `window.mainloop()` inside the `if__name__== "__main__"` block to the very end.
 
 *It is `root.mainloop()` if you have named your root variable root!*
 
@@ -278,7 +283,8 @@ The rest is easy to understand:-
 
 `def _setup_ui(self):` _setup_ui only has single underscores, not to be confused with special functions like `__init__` which have double underscores.
 
-Then `tk.label()` creates a label, basically a button which im going to name focus. Then you can modify that button using attributes such as `font=(<fontname>, <fontsize>, <style>)`, `background` & `foreground`. Then you need to pack all these attributes using   `self.timer.pack`. Use pady to make changes in the y direction aka make the button have greater width for example 20px. Similarly, use padx aka padding in the x direction to change the length of the label.
+Then `tk.label()` creates a label, basically a button which im going to name focus.
+After that, you can modify that button using attributes such as `font=(<fontname>, <fontsize>, <style>)`, `background` & `foreground`. Then you need to pack all these attributes using   `self.timer.pack`. Use pady to make changes in the y direction aka make the button have greater width for example 20px. Similarly, use padx aka padding in the x direction to change the length of the label.
 <br><br>
 
 <img width="1365" height="567" alt="Screenshot 2026-07-13 080225" src="https://github.com/user-attachments/assets/4e3d6386-639d-495f-81ee-421ddd7ccf9a" />
