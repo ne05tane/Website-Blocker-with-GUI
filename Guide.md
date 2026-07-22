@@ -232,7 +232,7 @@ Hints:-
 1.`fo.seek()` OR `fh.seek()` changes the position of the cursor by a specified no. of bytes. The syntax is {fo.seek(offset, from_what}.
 We want the file handle/cursor at the beginning so we put the reference as 0 in `fo.seek(0)` because 0 puts the cursor at the beginning, 1 lets it stay in its current position and 2 shifts the cursor at the end.
 
-2. `time.sleep()` pauses the execution of the current thread for a specified number of seconds. I later changed it from 30 seconds to something shorter. I recommend you do this to pause execution between checks or the script would consume 100% of the CPU cause the while loop would run infinitely fast!
+2.`time.sleep()` pauses the execution of the current thread for a specified number of seconds. I later changed it from 30 seconds to something shorter. I recommend you do this to pause execution between checks or the script would consume 100% of the CPU cause the while loop would run infinitely fast!
 
 This is the only instance in the code where time module is used. So if you don't want to implement `time.sleep()`, you don't need to `import time`. However, for the reasons I mentioned, it is highly suggested you do use this.
 
@@ -252,9 +252,9 @@ Remember to commit!
 <br><br>
 Back to main.py, we will `import threading` and our logic.py file.
 
-I'm gonna plagiarize the definition, <mark> "the threading module is a built-in Python library that provides a higher-level interface for creating and managing threads, allowing multiple operations to run concurrently within the same process.  It is designed primarily for I/O-bound tasks (like web scraping or file operations) where the program spends time waiting for external resources" </mark>
+I'm gonna plagiarize the definition but, <mark> *"the threading module is a built-in Python library that provides a higher-level interface for creating and managing threads, allowing multiple operations to run concurrently within the same process.  It is designed primarily for I/O-bound tasks (like web scraping or file operations) where the program spends time waiting for external resources"* </mark>
 
-Then we define a class `App` that will encapsulate the logic, state and widgets. The dunder (double underscore) method right below it is a special function that Python automatically executes the moment you create a new instance of the class.
+Now define a class `App` that will encapsulate the logic, state and widgets. The dunder (double underscore) method right below it is a special function that Python automatically executes the moment you create a new instance of the class.
 
 In the context of Tkinter, root is the main window or the top-level container for your entire application. Notice though, that in
 `def __init__(self, window)`, I named my root variable `window` because I didn't need to differentiate between a main window or other windows. 
@@ -269,12 +269,11 @@ Lastly, copy the last three methods just before `self._setup_ui()`. They will be
 
 <br><br>
 <img width="1189" height="680" alt="Screenshot 2026-07-13 073910" src="https://github.com/user-attachments/assets/164ab4a6-c777-4d8a-9037-7f6ce03923fa" />
-
 <br><br>
 
 You must also put `window.mainloop()` inside the `if__name__== "__main__"` block to the very end.
 
-*It is `root.mainloop()` if you have named your root variable root!*
+*Note: It is `root.mainloop()` if you have named your root variable root!*
 
 The rest is easy to understand:-
 1. Write `window=Tk()` or `root=Tk()` to initialize the main application window. Basically, this will contain all your widgets and labels.
@@ -284,7 +283,7 @@ The rest is easy to understand:-
 `def _setup_ui(self):` _setup_ui only has single underscores, not to be confused with special functions like `__init__` which have double underscores.
 
 Then `tk.label()` creates a label, basically a button which im going to name focus.
-After that, you can modify that button using attributes such as `font=(<fontname>, <fontsize>, <style>)`, `background` & `foreground`. Then you need to pack all these attributes using   `self.timer.pack`. Use pady to make changes in the y direction aka make the button have greater width for example 20px. Similarly, use padx aka padding in the x direction to change the length of the label.
+After that, you can modify that button using attributes such as `font=(<fontname>, <fontsize>, <style>)`, `background` & `foreground`. Then you need to pack all these attributes using `self.timer.pack`. Use pady to make changes in the y direction aka make the button have greater width for example 20px. Similarly, use padx aka padding in the x direction to change the length of the label.
 <br><br>
 
 <img width="1365" height="567" alt="Screenshot 2026-07-13 080225" src="https://github.com/user-attachments/assets/4e3d6386-639d-495f-81ee-421ddd7ccf9a" />
@@ -298,33 +297,168 @@ You can save and run to see how it looks so far.
 It's very basic and you can change it to your liking
 <br><br>
 
-<img width="957" height="496" alt="Screenshot 2026-07-22 144719" src="https://github.com/user-attachments/assets/776b4fe6-69d1-4aa1-b2c7-7321e165202b" />
-<img width="977" height="390" alt="Screenshot 2026-07-22 144707" src="https://github.com/user-attachments/assets/ce761eb0-877e-49b9-9594-3a16fb366164" />
-<img width="1015" height="520" alt="Screenshot 2026-07-22 144648" src="https://github.com/user-attachments/assets/f6f3e1d7-8027-4cd8-a6a9-d4c7691d3006" />
-<img width="1365" height="461" alt="Screenshot 2026-07-22 144624" src="https://github.com/user-attachments/assets/b5ced9b1-9929-4995-a9de-30132ac8cfc2" />
-<img width="1365" height="550" alt="Screenshot 2026-07-22 144604" src="https://github.com/user-attachments/assets/827c3fdd-189e-4df9-80c5-e6a75dc62325" />
-<img width="1364" height="476" alt="Screenshot 2026-07-22 144539" src="https://github.com/user-attachments/assets/0d0ac9ed-b175-4401-8879-e4cfdd383f80" />
-
-
 <img width="1365" height="588" alt="Screenshot 2026-07-13 081006" src="https://github.com/user-attachments/assets/2afea515-8588-4fb2-8161-c62422f043a3" />
 <br><br>
-We're gonna import another scrolledtext from tkinter as well. 
-<br><br>
+I'm gonna import another module scrolledtext from tkinter because I want to make a multi-line text box with a built-in scroll bar where you'll actually enter the list of websites. 
+<br><br><br>
 
 <img width="720" height="542" alt="Screenshot 2026-07-13 081506" src="https://github.com/user-attachments/assets/4d74e93a-997b-4d1d-8216-af8415c92922" />
 <br><br>
-Copy what I've written to create a text box that can scroll.
+The timer label acts as a display that will later be updated throughout the session. It's stored as an instance attribute (`self.timer`) because the application needs to change its text while the timer is running.
+
+After it's created, `.pack()` adds it to the window with some vertical padding.
+Then create scrolledtext.
+
+- `height` and `width` are defined in pixels.
+- Use `font=(<fontname>,<fontsize>)` to define well, the font.
+- `background` sets the widget's background color.
+- `relief=FLAT` removes the default raised border for a cleaner appearance.
 <br><br>
 
 <img width="1182" height="574" alt="Screenshot 2026-07-13 082144" src="https://github.com/user-attachments/assets/40196ae4-9a1a-4c95-a24b-2c96ac4eff35" />
 <br><br>
-I would like to change the box's dimensions
+At any point in time, you can modify all widgets/applications according to your liking. I'm only providing the base. 
+<br><br><br>
+
+<img width="1365" height="550" alt="Screenshot 2026-07-22 144604" src="https://github.com/user-attachments/assets/827c3fdd-189e-4df9-80c5-e6a75dc62325" />
+
+<br><br>
+Once the `ScrolledText` widget has been configured, it's added to the layout using `.pack()`. The horizontal and vertical padding simply gives the widget some breathing room so it isn't pressed against neighboring elements. `pady` adds padding in the y-direction and `padx` in the x-direction.
+
+Then write `duration = Frame(self.window, background="white")`: Instead of placing every widget directly inside the main window, a `Frame` is used to group the duration controls together. This makes layout management much simpler. Since the label and spinbox (see below) belong to the same row, they can both be packed inside the frame while the frame itself is positioned within the main window.
+
+Next the Duration label describes the input field beside it. Notice that its parent is `duration` rather than `self.window`, meaning it becomes part of the frame. Using `side=LEFT` tells Tkinter to arrange widgets horizontally within the frame instead of stacking them vertically.
+
+Just below it, we create a widget that will ask the user for the duration to be blocked. A `Spinbox` is used instead of a regular text entry because the input is constrained to numeric values. Next we limit the range to **0.1–24.0 hours**, with each click changing the value by **0.1 hours** (increment). This helps prevent invalid input while still allowing precise values.
+
+Although the spinbox has a valid range, it doesn't automatically start with the desired default value. These two calls- `self.enter_hours.delete(0, END)` & `self.enter_hours.insert(0, "1.0")` clear any existing content and insert `"1.0"` so the application initially displays a one-hour session.
+
+Finally, we can pack the widget into the frame alongside its label.
+
+<br><br>
+<img width="1365" height="461" alt="Screenshot 2026-07-22 144624" src="https://github.com/user-attachments/assets/b5ced9b1-9929-4995-a9de-30132ac8cfc2" />
 <br><br>
 
-<img width="1365" height="650" alt="Screenshot 2026-07-13 092206" src="https://github.com/user-attachments/assets/2adc24e1-70b2-4ce9-8fb6-47f6c67d60eb" />
+Create the action button and configure it using the same methods we did with previous labels. 
+
+But the most important here is: `command=self.toggle_action`. Rather than calling the function immediately, the button receives a reference to the method. Tkinter executes that method automatically whenever the user clicks the button.
+
+The remaining ones are mostly for the aesthetic:
+
+- `font` makes the button easier to read
+- `height=2` gives it a larger click area
+- `relief=FLAT` removes the default 3D border
+- `cursor="hand1"` changes the mouse cursor to a hand when hovering over the button. You can also write `hand2` to have two fingers hovering
+
+Now you have to add the button to the layout through `self.action_btn.pack`
+
+Then I stretched horizontally using `fill=X`, allowing it to occupy most of the window's width while leaving margins on each side with `padx`. This part is completely optional. I just wanted it to stand out as the primary application but of course, there are MUCH better ways to do this.
+
+The final widget is a simple informational label reminding the user that the application must be run with administrator privileges.
+Since this text never changes, there's no need to store it as an instance attribute. Packing it with `side=BOTTOM` anchors the label near the bottom of the window and keeps it separate from the main controls.
+
 <br><br>
-You can make your own changes to settle on what you like.
-<br><br><br>
+<img width="1015" height="520" alt="Screenshot 2026-07-22 144648" src="https://github.com/user-attachments/assets/f6f3e1d7-8027-4cd8-a6a9-d4c7691d3006" />
+<br><br>
+The next block after that is for switching between start and stop. You can go ahead and create separate start/stop buttons but the way I did it was to create a single button whose behavior depends on the current state. You can follow my steps to do the latter. Basically, the `self.is_blocking` flag tracks whether a focus session is already running. If no session is active, clicking the button starts one, otherwise, it stops the existing session.
+
+Remember the spinbox? its value is returned as a string, so we will convert it to a float before use in `try: hrs = float(self.enter_hours.get())`....`return`
+
+If the conversion fails or the value is less than or equal to zero, an error dialog is displayed and the method exits early with `return`. Validating user input before starting the background task helps prevent unexpected runtime errors.
+
+<br><br>
+- Collect websites:-
+ `urls = [
+    line.strip()
+    for line in self.url_txt.get("1.0", END).splitlines()
+    if line.strip()`
+    
+The contents of the text box are read as a single string, split into individual lines, and cleaned using `strip()`.
+The list comprehension also filters out blank lines, so the resulting list only contains actual website entries.
+
+- Checking for empty input:-
+`if not urls:
+    messagebox.showwarning(
+        "Missing URLs",
+        "Type in at least one website"
+    )
+    return`
+
+Before starting the blocking process, the application verifies that at least one website has been entered. If the list is empty, a warning dialog is shown and execution stops.
+
+- Confirm action:-
+`if not messagebox.askyesno(
+    "Confirm",
+    f"Block {len(urls)} sites for {hrs} hours?"
+):
+    return`
+This gives a final confirmation to the user to use the hosts file cause it requires administrative priveleges.
+`askyesno()` returns `True` if the user clicks **Yes** and `False` otherwise. If the answer is no, the method exits.
+
+<br><br>
+<img width="977" height="390" alt="Screenshot 2026-07-22 144707" src="https://github.com/user-attachments/assets/ce761eb0-877e-49b9-9594-3a16fb366164" />
+
+<br><br>
+```python
+self.stop_event.clear()
+
+self.block_thread = threading.Thread(
+    target=logic.block,
+    args=(hrs, urls, self.stop_event),
+    daemon=True
+)
+self.block_thread.start()
+```
+<explain>
+
+```python
+self.is_blocking = True
+
+self.timer_label.config(
+    text=f"Blocking for {hrs}h...",
+    fg="light pink"
+)
+
+self.action_btn.config(
+    text="Emergency Unblock",
+    bg="white"
+)
+
+self.url_txt.config(state=DISABLED)
+self.enter_hours.config(state=DISABLED)
+```
+
+After which we have to reconfigure several widgets for updating the interface:-
+
+- `is_blocking` records that a session is now active.
+- The status label displays the current session.
+- The button changes from *Start Focus Session* to *Emergency Unblock*.
+- The text box and duration selector are disabled so the user can't modify the session configuration while it's running.
+
+<br><br>
+<img width="957" height="496" alt="Screenshot 2026-07-22 144719" src="https://github.com/user-attachments/assets/776b4fe6-69d1-4aa1-b2c7-7321e165202b" />
+
+<br><br>
+```python
+if self.block_thread and self.block_thread.is_alive():
+    self.stop_event.set()
+```
+Before attempting to stop the session, the application verifies that a worker thread exists and is still running.
+This avoids trying to stop a thread that has already finished or was never started.
+
+```python
+self.is_blocking = False
+```
+The application's state flag is reset so future button presses will start a new session instead of attempting to stop one.
+
+The rest of the interface is then restored with through the following code snippet. The status label is updated, the action button returns to its original purpose, and the input widgets are re-enabled so the user can edit the websites or choose a new duration.
+
+As in the previous section, `.config()` is used to modify existing widgets rather than creating new ones.
+
+Finally, an information dialog- <mark>"Sites are unblocked" </mark> lets the user know that the blocking session has ended.
+
+
+
 
 ## Time to Ship -
 
