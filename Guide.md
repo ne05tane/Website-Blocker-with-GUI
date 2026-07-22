@@ -131,6 +131,7 @@ For this last step, you have to use the terminal. Locate the terminal in your ed
 ## Using tkinter - 
 
 It is better to keep the blocking logic and graphical interface separate. Our main.py will contain the GUI. You can actually skip to the part where we initialize logic.py but I wanted to make a window first (The rectangle box that has all your widgets like buttons and images)
+<br><br>
 
 <img width="1365" height="710" alt="Screenshot 2026-07-12 215250" src="https://github.com/user-attachments/assets/06960285-2fcb-463b-b853-0467a67c9bf3" />
 <br><br>
@@ -159,9 +160,11 @@ You can check your remote repository to see if it shows up.
 <br><br>
 To define the window's size, we use the method `window.geometry("widthxheight")`. You must enter the values in pixels. 
 
-YOu can even define its position: `window.geometry("widthxheight+x+y)` for example,  `window.geometry("300x200+100+50")` sets the size to 300x200 and positions the top-left corner at x=100, y=50. 
+You can even define its position: `window.geometry("widthxheight+x+y)` for example,  `window.geometry("300x200+100+50")` sets the size to 300x200 and positions the top-left corner at x=100, y=50. 
 
 Negative Coordinates: Using negative values (e.g., "-50-50") positions the window relative to the bottom-right edge of the screen.
+
+Use `window.title('text')` to name the title.
 
 But most importantly, you must call `window.loop(`) to start the event loop aka, keeping the application responsive and to actually display the window. If you try running main.py and for some reason, your root window does not show up, make sure to check if you've called it correctly.
 <br><br>
@@ -220,13 +223,22 @@ We want to be able to both read and write in our file.
 <br><br>
 
 <img width="919" height="520" alt="Screenshot 2026-07-12 235646" src="https://github.com/user-attachments/assets/3870ca9e-6602-4662-8ce8-86dacd2c2bc4" />
-<br>
+<br><br>
 
-Then the else block (datetime.datetime.now > end_time) will execute the unblocking phase, you can see how it's done above but I encourage you try to figure it out yourself FIRST.
+Then the else block (`datetime.datetime.now > end_time`) will execute the unblocking phase, you can see how it's done above but I encourage you try to figure it out yourself FIRST.
 
-At last, time.sleep() pauses the execution of the current thread for a specified number of seconds. I later changed it from 30 seconds to something shorter.
+Hints:-
 
-I recommend you do this to pause execution between checks or the script would consume 100% of the CPU cause the while loop would run infinitely fast! This is the only instance in the code where time module is used. So if you don't want to implement `time.sleep()`, you doon't need to `import time`. However, for the reasons I mentioned, it is highly suggested you do use this.
+1.`fo.seek()` OR `fh.seek()` changes the position of the cursor by a specified no. of bytes. The syntax is {fo.seek(offset, from_what}.
+We want the file handle/cursor at the beginning so we put the reference as 0 in `fo.seek(0)` because 0 puts the cursor at the beginning, 1 lets it stay in its current position and 2 shifts the cursor at the end.
+
+2. `time.sleep()` pauses the execution of the current thread for a specified number of seconds. I later changed it from 30 seconds to something shorter. I recommend you do this to pause execution between checks or the script would consume 100% of the CPU cause the while loop would run infinitely fast!
+
+This is the only instance in the code where time module is used. So if you don't want to implement `time.sleep()`, you don't need to `import time`. However, for the reasons I mentioned, it is highly suggested you do use this.
+
+3. `fo.truncate(size)` sets the file to exactly size bytes. If size is smaller than the current file, data is lost. Without arguments, it shrinks the file to the current position of the file pointer.
+
+Also, understand the difference between `read()` and `readlines()`. The first returns a string, the latter returns a *list* of strings. Use `read()` when you need the whole content as a block and `readlines()` when you need to process individual lines.
 
 Remember to commit!
 <br><br>
