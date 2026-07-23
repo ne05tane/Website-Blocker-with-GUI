@@ -7,6 +7,8 @@ created_at: 7-15-2026
 
 ## Intro - 
 
+You must have basic python knowledge before going through this guide. Other recommended but optional concepts to know are file & execution handling and verison control.  
+
 Let's first understand how it works.
 
 A website blocker functions by intercepting your computer's request to connect to a website and stopping it before it leaves your device or immediately upon arrival. More advanced blockers install a local proxy/firewall. However, we can make a simpler one by having the blocker edit a system's "host file".
@@ -50,31 +52,31 @@ Both Hackatime and Git are important to set up if you're doing the YSWS.
 
 ### Cloning a repo-
 
-I will be using VScode as that is what I'm most familiar with. 
+I will be using VSCode as that is what I'm most familiar with. 
 
 1)<img width="998" height="641" alt="Screenshot 2026-07-12 213132" src="https://github.com/user-attachments/assets/f9f51054-e3d1-4b94-8792-57a4a1407ed2" />
-
+<br><br>
 On GitHub, create a new repo and name it.
 You can add a README later.
 <br><br>
 
 2)<img width="1267" height="632" alt="Screenshot 2026-07-12 213222" src="https://github.com/user-attachments/assets/bbcf082e-70d6-44f6-a781-3ae77073ada6" />
-<br>
+<br><br>
 Copy the URL
 <br><br>
 
 3)<img width="1365" height="720" alt="Screenshot 2026-07-12 213631" src="https://github.com/user-attachments/assets/6bea7825-1ebf-432f-9480-5cd519dfe896" />
-<br>
+<br><br>
 Click on clone repository
 <br><br>
 
 4)<img width="1365" height="721" alt="Screenshot 2026-07-12 214000" src="https://github.com/user-attachments/assets/dda73aff-d855-4677-bb3e-bec45b39a6bd" />
-<br>
+<br><br>
 Paste the url in the search bar or alternatively, click on the correct repo from the dropdown menu.
 <br><br>
 
 5)<img width="1365" height="719" alt="Screenshot 2026-07-12 214415" src="https://github.com/user-attachments/assets/412a9cd3-7a52-4df5-ae36-875a46e78c95" />
-<br>
+<br><br>
 If you've done it right, the command center will display the correct repo's name.
 Click on new file and name it main.py
 <br><br>
@@ -97,7 +99,6 @@ main.py and nothing else. You can choose to write some code or stage it now itse
 2) Open the terminal in your editor and run `git add main.py`
 
 <br><br>
-
 <img width="1365" height="722" alt="Screenshot 2026-07-12 214609" src="https://github.com/user-attachments/assets/706cf9da-3916-468e-9a72-aad236b8e91c" />
 
 <br><br>
@@ -121,20 +122,19 @@ Just like `git add`, another way to commit is by using the terminal to run `git 
 
 For this last step, you have to use the terminal. Locate the terminal in your editor and write `git push`. Earlier, I said committing only saves your changes locally, but <mark>pushing</mark> shares them to a remote repository like GitHub. This serves as cloud backup and other people can learn from your code. You should remember the following three commands in order and remember to commit frequently!
 
-`git add .` The dot after `add` means stage *all* files and changes.
-`git commit -m "message"` & 
-`git push`
+- `git add .` The dot after `add` means stage *all* files and changes.
+- `git commit -m "message"` & 
+- `git push`
 
 <br><br>
-
-## Using tkinter - 
+## Tkinter - 
 
 It is better to keep the blocking logic and graphical interface separate. Our main.py will contain the GUI. You can actually skip to the part where we initialize logic.py but I wanted to make a window first (The rectangle box that has all your widgets like buttons and images)
 <br><br>
 
 <img width="1365" height="710" alt="Screenshot 2026-07-12 215250" src="https://github.com/user-attachments/assets/06960285-2fcb-463b-b853-0467a67c9bf3" />
-<br><br>
 
+<br><br>
 We start by importing tkinter to build our graphical interface. There are many ways you can do this:- 
 1. `import tkinter`
 2. `from tkinter import * ` (meaning from tkinter import all)
@@ -165,10 +165,11 @@ Negative Coordinates: Using negative values (e.g., "-50-50") positions the windo
 
 Use `window.title('text')` to name the title.
 
-But most importantly, you must call `window.loop(`) to start the event loop aka, keeping the application responsive and to actually display the window. If you try running main.py and for some reason, your root window does not show up, make sure to check if you've called it correctly.
-<br><br>
+But most importantly, you must call `window.mainloop()` to start the event loop aka, keeping the application responsive and to actually display the window. If you try running main.py and for some reason, your root window does not show up, make sure to check if you've called it correctly.
 
+<br><br>
 <img width="1365" height="721" alt="Screenshot 2026-07-12 221125" src="https://github.com/user-attachments/assets/5c2d9e19-7b56-42f7-a375-1ff684948ccc" />
+
 <br><br>
 This is what it looks like when you run it and as you can see, it kind of looks weird
 so you can modify the dimensions in `window.geometry()`
@@ -179,18 +180,22 @@ so you can modify the dimensions in `window.geometry()`
 If you're happy with how it looks, you can go ahead and stage and commit.
 <br><br>
 
+## Logic -
+
 <img width="964" height="308" alt="Screenshot 2026-07-12 224853" src="https://github.com/user-attachments/assets/88c1dc88-5157-4c74-a2f5-c7284378dbca" />
 <br><br>
 Next we're gonna initialise logic.py and import datetime and time modules.
 Create two variables as in the picture. One will hold the directory to our hosts file and the second - the loopback address.
-<br><br>
 
+<br><br>
 <img width="1348" height="665" alt="Screenshot 2026-07-12 225010" src="https://github.com/user-attachments/assets/30d6d8b5-22d5-4ab5-83f0-dbd4744cc1a7" />
+
 <br><br>
 Locate the hosts file in your system and copy the path. 
-<br><br>
 
+<br><br>
 <img width="1360" height="525" alt="Screenshot 2026-07-12 233524" src="https://github.com/user-attachments/assets/490b089d-afce-4f2c-9473-dfb6434b7032" />
+
 <br><br>
 Next write the blocking logic. I did this by creating a function with the same name that will take two arguments- `duration_hours` & `website_list`
 As the name says, one will hold a list of websites and the other will ask for the time duration that you want them blocked. 
@@ -219,11 +224,11 @@ Can you try to figure out how `fh.write(redirect  + " " + site "\n"` does that?
 
 Also note, `r` opens the file in "read mode", `w` in "write mode", `a` in "append mode", `r+` in "read and write" mode etc. 
 We want to be able to both read and write in our file.
-<br><br>
 
+<br><br>
 <img width="919" height="520" alt="Screenshot 2026-07-12 235646" src="https://github.com/user-attachments/assets/3870ca9e-6602-4662-8ce8-86dacd2c2bc4" />
-<br><br>
 
+<br><br>
 Then the else block (`datetime.datetime.now > end_time`) will execute the unblocking phase, you can see how it's done above but I encourage you try to figure it out yourself FIRST.
 
 Hints:-
@@ -240,8 +245,8 @@ This is the only instance in the code where time module is used. So if you don't
 Also, understand the difference between `read()` and `readlines()`. The first returns a string, the latter returns a *list* of strings. Use `read()` when you need the whole content as a block and `readlines()` when you need to process individual lines.
 
 Remember to commit!
-<br><br>
 
+<br><br>
 ## GUI -
 
 <insert wireframe>
@@ -265,11 +270,10 @@ Also, if you had earlier created the window, the methods you used to change its 
 
 Lastly, copy the last three methods just before `self._setup_ui()`. They will be explained later below.
 
-
 <br><br>
 <img width="1189" height="680" alt="Screenshot 2026-07-13 073910" src="https://github.com/user-attachments/assets/164ab4a6-c777-4d8a-9037-7f6ce03923fa" />
-<br><br>
 
+<br><br>
 You must also put `window.mainloop()` inside the `if__name__== "__main__"` block to the very end.
 
 *Note: It is `root.mainloop()` if you have named your root variable root!*
@@ -288,9 +292,10 @@ After that, you can modify that button using attributes such as `font=(<fontname
 <img width="1365" height="567" alt="Screenshot 2026-07-13 080225" src="https://github.com/user-attachments/assets/4e3d6386-639d-495f-81ee-421ddd7ccf9a" />
 <br><br>
 You can make as many labels as you want and modify them using the above attributes.
-<br><br>
 
+<br><br>
 <img width="1365" height="687" alt="Screenshot 2026-07-13 075746" src="https://github.com/user-attachments/assets/e01080dd-85b8-4490-9c84-94d62f4d7311" />
+
 <br><br>
 You can save and run to see how it looks so far. 
 It's very basic and you can change it to your liking
