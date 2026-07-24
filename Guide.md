@@ -364,7 +364,7 @@ Since this text never changes, there's no need to store it as an instance attrib
 <br><br>
 <img width="1015" height="520" alt="Screenshot 2026-07-22 144648" src="https://github.com/user-attachments/assets/f6f3e1d7-8027-4cd8-a6a9-d4c7691d3006" />
 <br><br>
-The next block after that is for switching between start and stop. You can go ahead and create separate start/stop buttons but the way I did it was to create a single button whose behavior depends on the current state. You can follow my steps to do the latter. Basically, the `self.is_blocking` flag tracks whether a focus session is already running. If no session is active, clicking the button starts one, otherwise, it stops the existing session.
+Next we figure out how to switch between start and stop. You can go ahead and create separate start/stop buttons but the way I did it was to create a single button whose behavior depends on the current state. You can follow my steps to do the latter. Basically, the `self.is_blocking` flag tracks whether a focus session is already running. If no session is active, clicking the button starts one, otherwise, it stops the existing session.
 
 Remember the spinbox? its value is returned as a string, so we will convert it to a float before use in `try: hrs = float(self.enter_hours.get())`....`return`
 
@@ -372,30 +372,36 @@ If the conversion fails or the value is less than or equal to zero, an error dia
 
 <br><br>
 - Collect websites:-
- `urls = [
+```python
+    urls = [
     line.strip()
     for line in self.url_txt.get("1.0", END).splitlines()
-    if line.strip()`
+    if line.strip()
+```
     
 The contents of the text box are read as a single string, split into individual lines, and cleaned using `strip()`.
 The list comprehension also filters out blank lines, so the resulting list only contains actual website entries.
 
 - Checking for empty input:-
-`if not urls:
+```python
+   if not urls:
     messagebox.showwarning(
         "Missing URLs",
         "Type in at least one website"
     )
-    return`
+    return
+```
 
 Before starting the blocking process, the application verifies that at least one website has been entered. If the list is empty, a warning dialog is shown and execution stops.
 
 - Confirm action:-
-`if not messagebox.askyesno(
+```python
+    if not messagebox.askyesno(
     "Confirm",
     f"Block {len(urls)} sites for {hrs} hours?"
 ):
-    return`
+    return
+```
 This gives a final confirmation to the user to use the hosts file cause it requires administrative priveleges.
 `askyesno()` returns `True` if the user clicks **Yes** and `False` otherwise. If the answer is no, the method exits.
 
