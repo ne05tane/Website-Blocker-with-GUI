@@ -5,13 +5,21 @@ description:  A software application that allows users to restrict access to spe
 created_at: 7-15-2026
 ---
 
-## Intro - 
+## Disclaimer - 
 
-### You must have basic python knowledge before going through this guide. Other recommended but optional concepts to know are file & execution handling and version control.  
+#### You must have basic python knowledge before going through this guide. Other recommended but optional concepts to know are file & execution handling and version control.  
 
-Let's first understand how it works.
+#### Though intended for windows, anyone can follow along but keep in mind mac/linux users that you'll need to add a few lines of python code at the very top of your script that checks if it's running as "root".
 
-A website blocker functions by intercepting your computer's request to connect to a website and stopping it before it leaves your device or immediately upon arrival. More advanced blockers install a local proxy/firewall. However, we can make a simpler one by having the blocker edit a system's "host file".
+#### If not, it automatically restarts itself using sudo. Also be ready for your users to deal with "Gatekeeper" warnings blocking the app because it's from an "unidentified developer". 
+
+#### If this happens, right-click and select "Open"/ dig into security settings to run it.
+
+## Intro -
+
+Let's understand how it works.
+
+A website blocker intercepts your computer's request to connect to a website and stops it before it leaves your device. More advanced blockers install a local proxy/firewall. However, we can make a simpler one by having the blocker edit a system's "host file".
 
 In every major operating system, there sits a plain-text "host file" that maps hostnames to IP addresses. Usually, you can locate it on 
 Windows at <mark>C:\Windows\System32\drivers\etc\hosts</mark> and on Mac/Linux at <mark>/etc/hosts</mark> 
@@ -19,18 +27,15 @@ Windows at <mark>C:\Windows\System32\drivers\etc\hosts</mark> and on Mac/Linux a
 For example, when you type www.wikipedia.com, the computer first checks the host file. If it finds an entry, it uses that IP address. If not,
 it asks a DNS server (the internet's translator) for the correct IP.
 
-Okay, now keep that in mind.
-
-You might know that every device on a network has an IP address. In IPv4 networking, they look like four groups of numbers separated by three periods.
+Now you might know that every device on a network has an IP address. In IPv4 networking, they look like four groups of numbers separated by three periods.
 E.g, <mark>157.240.229.35</mark> for Facebook. 
 
 Your computer has multiple addresses depending on context & one of them, is what you call a "Loopback address", which is strictly used 
 for internal testing. 
-<mark>127.0.0.1</mark> is the standard and most universally recognized loopback address, but it is technically just the first usable address in a 
-massive reserved block that includes *16 million adresses* from <mark>127.0.0.1</mark> to <mark>127.255.255.254</mark>.
+<mark>127.0.0.1</mark> is the standard and most universally recognized loopback address, but it is technically just the first usable address in a massive reserved block that includes **16 million adresses** from <mark>127.0.0.1</mark> to <mark>127.255.255.254</mark>.
 
 The GUI blocker automatically adds lines to this file mapping the unwanted domain to the loopback address. 
-A simple way to do this is just by writing 127.0.0.1 next to the website like - 127.0.0.1 www.instagram.com
+A simple way to do this is just by writing 127.0.0.1 next to the website like - **127.0.0.1 www.instagram.com**
 
 Your computer tries to connect to itself instead of the real website, and unless it is somehow running an instagram server locally, the connection fails and the site appears blocked.
 
@@ -64,34 +69,34 @@ You can add a README later.
 <br><br>
 Copy the URL
 <br><br>
-
 3)<img width="1365" height="720" alt="Screenshot 2026-07-12 213631" src="https://github.com/user-attachments/assets/6bea7825-1ebf-432f-9480-5cd519dfe896" />
 <br><br>
 Click on clone repository
-<br><br>
 
+<br><br>
 4)<img width="1365" height="721" alt="Screenshot 2026-07-12 214000" src="https://github.com/user-attachments/assets/dda73aff-d855-4677-bb3e-bec45b39a6bd" />
 <br><br>
 Paste the url in the search bar or alternatively, click on the correct repo from the dropdown menu.
-<br><br>
 
+<br><br>
 5)<img width="1365" height="719" alt="Screenshot 2026-07-12 214415" src="https://github.com/user-attachments/assets/412a9cd3-7a52-4df5-ae36-875a46e78c95" />
 <br><br>
 If you've done it right, the command center will display the correct repo's name.
 Click on new file and name it main.py
+
 <br><br>
 
 ## Basics -
 
 <img width="1365" height="719" alt="Screenshot 2026-07-12 214524" src="https://github.com/user-attachments/assets/3645e26f-0c16-4fc5-b9a4-32eb8be29556" />
 <br><br>
-Yay! Time to make your first commit.
+Yay! Time to make your first commit (and learn version control).
 
 Locate and click on Source Control (The Y-shaped icon). You will see that right now, your main.py file is unstaged so we have to do three steps-stage, commit and push.
 
 In very simplified terms, you essentially wanna take snapshots of your code. This helps you undo mistakes and revert to previous versions if errors occur and as mentioned above, you might need to install git first.
 
-<mark>Stage</mark> means to choose specific changes from your working directory to include in the next snapshot. We have so far only created 
+**Stage** means to choose specific changes from your working directory to include in the next snapshot. We have so far only created 
 main.py and nothing else. You can choose to write some code or stage it now itself through two ways :-
 
 1) Click on the plus icon as highlighted in the picture above.
@@ -111,16 +116,16 @@ In the picture above, I wrote "init", short for initialization. Only committing 
 For example, you think a block of code you've written is not needed. So you delete it, save your modified file, run `git add` (staging) and write a concise message explaining your step - "remove redundant code".
 
 This is what I did. I initialized a new python file and now I wanna save this snapshot in history so I explained my step - "init"
-Once you write init, click on commit and tada! you've just made your first commit.
+Once you write init, click on commit and you've just made your first one.
 
 Just like `git add`, another way to commit is by using the terminal to run `git commit -m "Your message"` 
 
 <br><br>
 
 <img width="1365" height="477" alt="Screenshot 2026-07-12 214747" src="https://github.com/user-attachments/assets/882b727e-a3e5-450c-98c0-c5cd98173ca4" />
-<br><br>
 
-For this last step, you have to use the terminal. Locate the terminal in your editor and write `git push`. Earlier, I said committing only saves your changes locally, but <mark>pushing</mark> shares them to a remote repository like GitHub. This serves as cloud backup and other people can learn from your code. You should remember the following three commands in order and remember to commit frequently!
+<br><br>
+For this last step, you have to use the terminal. Locate the terminal in your editor and write `git push`. Earlier, I said committing only saves your changes locally, but **pushing** shares them to a remote repository like GitHub. This serves as cloud backup and other people can learn from your code. You should remember the following three commands in order and remember to commit frequently!
 
 - `git add .` The dot after `add` means stage *all* files and changes.
 - `git commit -m "message"` & 
@@ -130,8 +135,8 @@ For this last step, you have to use the terminal. Locate the terminal in your ed
 ## Tkinter - 
 
 It is better to keep the blocking logic and graphical interface separate. Our main.py will contain the GUI. You can actually skip to the part where we initialize logic.py but I wanted to make a window first (The rectangle box that has all your widgets like buttons and images)
-<br><br>
 
+<br><br>
 <img width="1365" height="710" alt="Screenshot 2026-07-12 215250" src="https://github.com/user-attachments/assets/06960285-2fcb-463b-b853-0467a67c9bf3" />
 
 <br><br>
@@ -143,8 +148,8 @@ We start by importing tkinter to build our graphical interface. There are many w
 Next, `window=Tk()` instantiates the root window (the main container that holds you buttons, widgets and labels)
 
 Save your file, use the three git commands in order or use the source control sidebar to commit and push.
-<br><br>
 
+<br><br>
 <img width="1365" height="691" alt="Screenshot 2026-07-12 215433" src="https://github.com/user-attachments/assets/97d10863-191b-4840-b0fb-d038d0e1c0eb" />
 <br><br>
 This is what the terminal looks like after everything
@@ -152,15 +157,15 @@ This is what the terminal looks like after everything
 
 <img width="1365" height="641" alt="Screenshot 2026-07-12 215827" src="https://github.com/user-attachments/assets/10b13699-a600-4446-ac87-74717a48fb7b" />
 <br><br>
-You can check your remote repository to see if it shows up. 
-<br><br><br>
+You can check your remote repository to see if it shows up.
 
+<br><br>
 <img width="1363" height="683" alt="Screenshot 2026-07-12 221111" src="https://github.com/user-attachments/assets/7acfdbd2-ff85-4275-bebd-ab10315a389a" />
 
 <br><br>
 To define the window's size, we use the method `window.geometry("widthxheight")`. You must enter the values in pixels. 
 
-You can even define its position: `window.geometry("widthxheight+x+y)` for example,  `window.geometry("300x200+100+50")` sets the size to 300x200 and positions the top-left corner at x=100, y=50. 
+You can even define its position using `window.geometry("widthxheight+x+y)` for example,  `window.geometry("300x200+100+50")` sets the size to 300x200 and positions the top-left corner at x=100, y=50. 
 
 Negative Coordinates: Using negative values (e.g., "-50-50") positions the window relative to the bottom-right edge of the screen.
 
@@ -172,7 +177,7 @@ But most importantly, you must call `window.mainloop()` to start the event loop 
 <img width="1365" height="721" alt="Screenshot 2026-07-12 221125" src="https://github.com/user-attachments/assets/5c2d9e19-7b56-42f7-a375-1ff684948ccc" />
 
 <br><br>
-This is what it looks like when you run it and as you can see, it kind of looks weird
+Here is what it looks like when you run it. Came out kind of weird
 so you can modify the dimensions in `window.geometry()`
 <br><br>
 
@@ -198,20 +203,20 @@ Locate the hosts file in your system and copy the path.
 <img width="1360" height="525" alt="Screenshot 2026-07-12 233524" src="https://github.com/user-attachments/assets/490b089d-afce-4f2c-9473-dfb6434b7032" />
 
 <br><br>
-Next write the blocking logic. I did this by creating a function with the same name that will take two arguments- `duration_hours` & `website_list`
-As the name says, one will hold a list of websites and the other will ask for the time duration that you want them blocked. 
+Next write the blocking logic. I did this by creating a function with the same name that will take two arguments- `duration_hours` & ```website_list```
+As the name says, one holds a list of websites and the other will ask for the time duration that you want them blocked. 
 
 Then we define <mark>endtime</mark> to be a difference between your current local time and the duration that you enter. 
-Simply add `datetime.datetime.now` to `datetime.timedelta()`
+Simply add ```datetime.datetime.now``` to ```datetime.timedelta()```
 
-`datetime.datetime.now` is a class method that returns a datetime object representing the current local date and time based on the system clock. 
-`datetime.timedelta()` represents a duration or difference between two dates or times, rather than a specific point in time.
+```datetime.datetime.now``` is a class method that returns a datetime object representing the current local date and time based on the system clock. 
+```datetime.timedelta()``` represents a duration or difference between two dates or times, rather than a specific point in time.
 
 Name the variable that will hold duration_hours for example, hours like I did above.
 
 If you know how to work with file handling operations in python, the next steps are easy,
 
-In the `While True:` block, it basically says,
+In the ```While True:``` block, it basically says,
 
 IF the current date and time (`datetime.datetime.now`) is less than our defined endtime, open the hosts file in "read and write" mode (`r+`) using a shorthand (`fh` as I named it but you can use `fo`, short for file object) and run the following instructions:-
 
@@ -230,11 +235,11 @@ We want to be able to both read and write in our file.
 <img width="919" height="520" alt="Screenshot 2026-07-12 235646" src="https://github.com/user-attachments/assets/3870ca9e-6602-4662-8ce8-86dacd2c2bc4" />
 
 <br><br>
-Then the else block (`datetime.datetime.now > end_time`) will execute the unblocking phase, you can see how it's done above but I encourage you try to figure it out yourself FIRST.
+Then the else block (`datetime.datetime.now > end_time`) will execute the unblocking phase, you can see how it's done above but I encourage you try to figure it out yourself first.
 
 Hints:-
 
-1.`fo.seek()` OR `fh.seek()` changes the position of the cursor by a specified no. of bytes. The syntax is {fo.seek(offset, from_what}.
+1.`fo.seek()` OR `fh.seek()` changes the position of the cursor by a specified no. of bytes.
 We want the file handle/cursor at the beginning so we put the reference as 0 in `fo.seek(0)` because 0 puts the cursor at the beginning, 1 lets it stay in its current position and 2 shifts the cursor at the end.
 
 2.`time.sleep()` pauses the execution of the current thread for a specified number of seconds. I later changed it from 30 seconds to something shorter. I recommend you do this to pause execution between checks or the script would consume 100% of the CPU cause the while loop would run infinitely fast!
@@ -243,14 +248,14 @@ This is the only instance in the code where time module is used. So if you don't
 
 3. `fo.truncate(size)` sets the file to exactly size bytes. If size is smaller than the current file, data is lost. Without arguments, it shrinks the file to the current position of the file pointer.
 
-Also, understand the difference between `read()` and `readlines()`. The first returns a string, the latter returns a *list* of strings. Use `read()` when you need the whole content as a block and `readlines()` when you need to process individual lines.
+Also, understand the difference between `read()` and `readlines()`. The first returns a string, the latter returns a *list* of strings. Use `read()` when you need the whole content as a block and `readlines()` when you need to process individual lines like now.
 
 Remember to commit!
 
 <br><br>
 ## GUI -
 
-You can choose to build and code simultaneously or design a complete visual mockup first. If you aren't building with Tkinter, you should likely create your wireframes in Figma.
+You can choose to build and code simultaneously or design a complete visual mockup first. If you plan to launch a webpage, you should likely create your wireframes in Figma.
 
 I don't plan to make the UI too complex or visually stunning so I fleshed it out on paper. 
 
@@ -271,7 +276,7 @@ I've already created the window and named the title, so now I need five more thi
 
 <br><br>
 Back to main.py, we will import the threading module and logic.py through `import <name of your file`.
-Since mine is simply named "logic", it will be `import logic`. You have to make sure your filename doesn't match any existing modules/libraries in python or as you can guess, it will create problems when you try and import it.
+Since mine is simply named "logic", it will be `import logic`. You have to make sure your filename doesn't match any existing modules/libraries in python or as you might guess, it will create problems when you try and import it.
 
 I'm gonna plagiarize the definition but, *"the threading module is a built-in Python library that provides a higher-level interface for creating and managing threads, allowing multiple operations to run concurrently within the same process.  It is designed primarily for I/O-bound tasks (like web scraping or file operations) where the program spends time waiting for external resources"*
 
@@ -290,12 +295,12 @@ Next, below are four most fundamental ways to configure a window.
         self.root = tk.Tk()
 
         # Configure Title
-        self.root.title("My Application")
+        self.root.title("App name")
         
         # Configure Geometry: 800x600 pixels, positioned at x=100, y=50
         self.root.geometry("800x600+100+50")
         
-        # Configure Background Color
+        # Background Color in hex code
         self.root.configure(bg="#f0f0f0")
 ```
 
@@ -349,8 +354,8 @@ I'm gonna import another module scrolledtext from tkinter because as mentioned a
 The timer label acts as a display that will later be updated throughout the session. It's stored as an instance attribute (`self.timer`) because the application needs to change its text while the timer is running.
 
 After it's created, `.pack()` adds it to the window with some vertical padding.
-Then create scrolledtext.
 
+Then create scrolledtext :-
 - `height` and `width` are defined in pixels.
 - Use `font=(<fontname>,<fontsize>)` to define well, the font.
 - `background` sets the widget's background color.
@@ -358,17 +363,17 @@ Then create scrolledtext.
 
 <br><br>
 <img width="1182" height="574" alt="Screenshot 2026-07-13 082144" src="https://github.com/user-attachments/assets/40196ae4-9a1a-4c95-a24b-2c96ac4eff35" />
-<br><br>
 
+<br><br>
 Check to see how everything looks so far
  
 <br><br>
 <img width="1365" height="550" alt="Screenshot 2026-07-22 144604" src="https://github.com/user-attachments/assets/827c3fdd-189e-4df9-80c5-e6a75dc62325" />
 
 <br><br>
-Once the `ScrolledText` widget has been configured, it's added to the layout using `.pack()`. The horizontal and vertical padding simply gives the widget some breathing room so it isn't pressed against neighboring elements. `pady` adds padding in the y-direction and `padx` in the x-direction.
+Once the `ScrolledText` widget has been configured, it's added to the layout using `.pack()`. The horizontal and vertical padding gives it some space so it isn't pressed against neighboring elements. `pady` adds padding in the y-direction and `padx` in the x-direction.
 
-Then write `duration = Frame(self.window, background="white")`: Instead of placing every widget directly inside the main window, a `Frame` is used to group the duration controls together. This makes layout management much simpler. Since the label and spinbox (see below) belong to the same row, they can both be packed inside the frame while the frame itself is positioned within the main window.
+Now write `duration = Frame(self.window, background="white")`: Instead of placing every widget directly inside the main window, a `Frame` is used to group the duration controls together. This makes layout management much simpler. Since the label and spinbox (see 4th para) belong to the same row, they can both be packed inside the frame while the frame itself is positioned within the main window.
 
 Next the Duration label describes the input field beside it. Notice that its parent is `duration` rather than `self.window`, meaning it becomes part of the frame. Using `side=LEFT` tells Tkinter to arrange widgets horizontally within the frame instead of stacking them vertically.
 
@@ -515,10 +520,8 @@ yayayayay </3 what is shipping you say? well it doesn't really do much benefit i
 
 You must ship it - in other words, make it shareable!
 
-How do you share a website blocker that requires admin rights on the user's computer? Scroll way down to see instructions for mac/Linux
-
-### 1) For Windows -
-
+<br>
+In Windows,
 Open NotePad and copy this exact code
    
      <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -526,7 +529,7 @@ Open NotePad and copy this exact code
       <trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">
        <security>
         <requestedPrivileges>
-          <requestedExecutionLevel level="requireAdministrator" uiAccess="false"/>
+         <requestedExecutionLevel level="requireAdministrator" uiAccess="false"/>
         </requestedPrivileges>
        </security>
       </trustInfo>
@@ -566,7 +569,12 @@ This is what the terminal shows at the very end if you ran everything correctly.
 <img width="673" height="181" alt="Screenshot 2026-07-26 174554" src="https://github.com/user-attachments/assets/96242186-7f6a-4abf-8ab3-7ee29a6cda0f" />
 
 <br>
-A single file - Focus.exe/WebsiteBlocker.exe appears in the new dist folder. This file contains your code, Python, and the admin rights request.
+Finally, you'll see Focus.exe/WebsiteBlocker.exe appear in the new dist folder. Send this exact file to people who wanna run your project.
+When you run it the first time, windows will give you warnings. Ignore them and click yes on the admin permission pop-up.
+
+### The file might disappear immediately upon download due to antivirus software doing its thing. Just temporarily disable real-time protection or add an exclusion for the file before running it.
+
+
 
 
 
