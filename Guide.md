@@ -521,29 +521,56 @@ How do you share a website blocker that requires admin rights on the user's comp
 
 Open NotePad and copy this exact code
    
-   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-   <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
-    <trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">
-     <security>
-      <requestedPrivileges>
-        <requestedExecutionLevel level="requireAdministrator" uiAccess="false"/>
-      </requestedPrivileges>
-     </security>
-    </trustInfo>
-   </assembly> 
+     <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+     <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+      <trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">
+       <security>
+        <requestedPrivileges>
+          <requestedExecutionLevel level="requireAdministrator" uiAccess="false"/>
+        </requestedPrivileges>
+       </security>
+      </trustInfo>
+     </assembly> 
           
-<br><br>
+<br>
 Name it **manifest** & save it as **.xml** file. Do not save it as .txt or anything else.
+
 Basically, when you run your program, your code tries to edit the hosts file, then windows says "No Access" and your app crashes.
 But a manifest saves that from happening by prompting windows to show a pop-up that asks the user to click yes 
 
 <br><br>
-Make sure your manifest is in the same folder that has main.py in it.
 <img width="729" height="286" alt="Screenshot 2026-07-26 174318" src="https://github.com/user-attachments/assets/ba7a645d-91d9-4940-a82f-e4b0c9dd6d82" />
+
+<br>
+Make sure your manifest is in the same folder that has main.py in it.
 
 <br><br>
 <img width="875" height="253" alt="Screenshot 2026-07-26 174352" src="https://github.com/user-attachments/assets/0c867fe4-40c1-45ee-adf2-fa1f67d8fb91" />
-Then open PowerShell or command prompt 
+
+<br>
+Then open PowerShell or command prompt. Make sure you change it to the right path that contains the manifest. 
+(go to your project folder, copy the path and in the terminal, write "cd your_copied_path" )
+
+And run the following command :-
+```pyinstaller --onefile --windowed --name "WebsiteBlocker" --manifest=manifest.xml main.py```
+
+In place of "WebsiteBlocker", you can give it any name. I want to call my app "Focus" so I wrote ``` --name "Focus"``` instead.
+
+<br>
+<img width="837" height="184" alt="Screenshot 2026-07-26 174458" src="https://github.com/user-attachments/assets/6be6b6b5-a47c-4ed2-8116-36d5ddfa6bc9" />
+<br>
+This is what the terminal shows at the very end if you ran everything correctly.
+
+<br><br>
+<img width="703" height="347" alt="Screenshot 2026-07-26 174547" src="https://github.com/user-attachments/assets/9f91074c-95cb-4d85-988a-7eac4a78580b" />
+<img width="673" height="181" alt="Screenshot 2026-07-26 174554" src="https://github.com/user-attachments/assets/96242186-7f6a-4abf-8ab3-7ee29a6cda0f" />
+
+<br>
+A single file - Focus.exe/WebsiteBlocker.exe appears in the new dist folder. This file contains your code, Python, and the admin rights request.
+
+
+
+
 
 
 
