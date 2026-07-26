@@ -7,7 +7,7 @@ created_at: 7-15-2026
 
 ## Intro - 
 
-### You must have basic python knowledge before going through this guide. Other recommended but optional concepts to know are file & execution handling and verison control.  
+### You must have basic python knowledge before going through this guide. Other recommended but optional concepts to know are file & execution handling and version control.  
 
 Let's first understand how it works.
 
