@@ -7,7 +7,7 @@ created_at: 7-15-2026
 
 ## Intro - 
 
-You must have basic python knowledge before going through this guide. Other recommended but optional concepts to know are file & execution handling and verison control.  
+### You must have basic python knowledge before going through this guide. Other recommended but optional concepts to know are file & execution handling and verison control.  
 
 Let's first understand how it works.
 
@@ -156,6 +156,7 @@ You can check your remote repository to see if it shows up.
 <br><br><br>
 
 <img width="1363" height="683" alt="Screenshot 2026-07-12 221111" src="https://github.com/user-attachments/assets/7acfdbd2-ff85-4275-bebd-ab10315a389a" />
+
 <br><br>
 To define the window's size, we use the method `window.geometry("widthxheight")`. You must enter the values in pixels. 
 
@@ -249,26 +250,58 @@ Remember to commit!
 <br><br>
 ## GUI -
 
-<insert wireframe>
+You can choose to build and code simultaneously or design a complete visual mockup first. If you aren't building with Tkinter, you should likely create your wireframes in Figma.
 
+I don't plan to make the UI too complex or visually stunning so I fleshed it out on paper. 
+
+Anyways Here is my crappy design:
+<br><br>
+<img width="2417" height="1921" alt="IMG_20260724_221957_597~2" src="https://github.com/user-attachments/assets/71d36a71-37db-4ea0-bdf6-c993b33d2a08" />
+<br><br>
+I've already created the window and named the title, so now I need five more things or "widgets":-
+
+1. A big label that says "focus". This is not an action button, meaning it doesn't do anything if you press it.
+2. A prompt asking the users to enter website list
+3. A textbox with a scrollbar 
+4. An widget that holds the duration of your focus time & finally,
+5. The main start button 
+
+<br><br>
 <img width="993" height="686" alt="Screenshot 2026-07-13 003742" src="https://github.com/user-attachments/assets/0a23dd0c-2c11-4f90-a580-086851f6acb1" />
 
 <br><br>
-Back to main.py, we will `import threading` and our logic.py file.
+Back to main.py, we will import the threading module and logic.py through `import <name of your file`.
+Since mine is simply named "logic", it will be `import logic`. You have to make sure your filename doesn't match any existing modules/libraries in python or as you can guess, it will create problems when you try and import it.
 
-I'm gonna plagiarize the definition but, <mark> *"the threading module is a built-in Python library that provides a higher-level interface for creating and managing threads, allowing multiple operations to run concurrently within the same process.  It is designed primarily for I/O-bound tasks (like web scraping or file operations) where the program spends time waiting for external resources"* </mark>
+I'm gonna plagiarize the definition but, *"the threading module is a built-in Python library that provides a higher-level interface for creating and managing threads, allowing multiple operations to run concurrently within the same process.  It is designed primarily for I/O-bound tasks (like web scraping or file operations) where the program spends time waiting for external resources"*
 
 Now define a class `App` that will encapsulate the logic, state and widgets. The dunder (double underscore) method right below it is a special function that Python automatically executes the moment you create a new instance of the class.
 
+If you had earlier created the window, the methods you used to change its size and position will all have `self` added in front. (see above) 
+
 In the context of Tkinter, root is the main window or the top-level container for your entire application. Notice though, that in
 `def __init__(self, window)`, I named my root variable `window` because I didn't need to differentiate between a main window or other windows. 
-However, the standard is to just name it `root`.
+However, the standard is to just name it `root`. If you name it root, you will write everything as `self.root` instead of `self.window`.
 
-If you name it root, you will write `self.root` instead of `self.window`. 
+Next, below are four most fundamental ways to configure a window.
 
-Also, if you had earlier created the window, the methods you used to change its size and position will all have `self` added in front. (see above) 
+```python
+        # Defines the root widget
+        self.root = tk.Tk()
 
-Lastly, copy the last three methods just before `self._setup_ui()`. They will be explained later below.
+        # Configure Title
+        self.root.title("My Application")
+        
+        # Configure Geometry: 800x600 pixels, positioned at x=100, y=50
+        self.root.geometry("800x600+100+50")
+        
+        # Configure Background Color
+        self.root.configure(bg="#f0f0f0")
+```
+
+Feel free to configure your root application any other way!
+
+Lastly, copy the last three methods just before `self._setup_ui()`. They will be explained later in the guide.
 
 <br><br>
 <img width="1189" height="680" alt="Screenshot 2026-07-13 073910" src="https://github.com/user-attachments/assets/164ab4a6-c777-4d8a-9037-7f6ce03923fa" />
@@ -278,34 +311,39 @@ You must also put `window.mainloop()` inside the `if__name__== "__main__"` block
 
 *Note: It is `root.mainloop()` if you have named your root variable root!*
 
-The rest is easy to understand:-
+The rest is easy to understand (*skip this if you've already done it*)
 1. Write `window=Tk()` or `root=Tk()` to initialize the main application window. Basically, this will contain all your widgets and labels.
 2. `app=App(window)` or `app=App(root)`
 3. Finally, `window.mainloop()` or `root.mainloop()` to run the window. 
 
-`def _setup_ui(self):` _setup_ui only has single underscores, not to be confused with special functions like `__init__` which have double underscores.
+Next create a function-`def _setup_ui(self):` 
+*_setup_ui only has single underscores, not to be confused with special functions like `__init__` which have double underscores.*
 
-Then `tk.label()` creates a label, basically a button which im going to name focus.
-After that, you can modify that button using attributes such as `font=(<fontname>, <fontsize>, <style>)`, `background` & `foreground`. Then you need to pack all these attributes using `self.timer.pack`. Use pady to make changes in the y direction aka make the button have greater width for example 20px. Similarly, use padx aka padding in the x direction to change the length of the label.
+Then I'm going to create my first label "FOCUS" using `tk.label()`. 
+Anytime you wanna create a label you can do it this way.
+
+After that, you can modify that button/label using attributes such as `font=(<fontname>, <fontsize>, <style>)`, `background` & `foreground`. 
+
+Then you need to pack all these attributes using `self.timer.pack`. Use pady to make changes in the y direction aka make the button have greater width for example 20px. Similarly, use padx aka padding in the x direction to change the length of the label.
+
 <br><br>
-
 <img width="1365" height="567" alt="Screenshot 2026-07-13 080225" src="https://github.com/user-attachments/assets/4e3d6386-639d-495f-81ee-421ddd7ccf9a" />
 <br><br>
-You can make as many labels as you want and modify them using the above attributes.
+Make as many labels as you want (according to your design) and modify them using the above attributes.
 
 <br><br>
 <img width="1365" height="687" alt="Screenshot 2026-07-13 075746" src="https://github.com/user-attachments/assets/e01080dd-85b8-4490-9c84-94d62f4d7311" />
 
 <br><br>
-You can save and run to see how it looks so far. 
-It's very basic and you can change it to your liking
-<br><br>
+Save your file and run it to see how it looks so far. 
+Mine is very basic and I only aim to provide a base which you can change or tweak as per your liking
 
+<br><br>
 <img width="1365" height="588" alt="Screenshot 2026-07-13 081006" src="https://github.com/user-attachments/assets/2afea515-8588-4fb2-8161-c62422f043a3" />
 <br><br>
-I'm gonna import another module scrolledtext from tkinter because I want to make a multi-line text box with a built-in scroll bar where you'll actually enter the list of websites. 
-<br><br><br>
+I'm gonna import another module scrolledtext from tkinter because as mentioned above, I want to make a multi-line text box with a built-in scroll bar where you'll actually enter the list of websites. 
 
+<br><br>
 <img width="720" height="542" alt="Screenshot 2026-07-13 081506" src="https://github.com/user-attachments/assets/4d74e93a-997b-4d1d-8216-af8415c92922" />
 <br><br>
 The timer label acts as a display that will later be updated throughout the session. It's stored as an instance attribute (`self.timer`) because the application needs to change its text while the timer is running.
@@ -317,13 +355,14 @@ Then create scrolledtext.
 - Use `font=(<fontname>,<fontsize>)` to define well, the font.
 - `background` sets the widget's background color.
 - `relief=FLAT` removes the default raised border for a cleaner appearance.
-<br><br>
 
+<br><br>
 <img width="1182" height="574" alt="Screenshot 2026-07-13 082144" src="https://github.com/user-attachments/assets/40196ae4-9a1a-4c95-a24b-2c96ac4eff35" />
 <br><br>
-At any point in time, you can modify all widgets/applications according to your liking. I'm only providing the base. 
-<br><br><br>
 
+Check to see how everything looks so far
+ 
+<br><br>
 <img width="1365" height="550" alt="Screenshot 2026-07-22 144604" src="https://github.com/user-attachments/assets/827c3fdd-189e-4df9-80c5-e6a75dc62325" />
 
 <br><br>
