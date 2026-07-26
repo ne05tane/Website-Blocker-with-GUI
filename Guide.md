@@ -511,6 +511,41 @@ Finally, an information dialog- <mark>"Sites are unblocked" </mark> lets the use
 
 ## Time to Ship -
 
+yayayayay </3 what is shipping you say? well it doesn't really do much benefit if your awesome project sits in your computer alone and unseen :c 
+
+You must ship it - in other words, make it shareable!
+
+How do you share a website blocker that requires admin rights on the user's computer? Scroll way down to see instructions for mac/Linux
+
+### 1) For Windows -
+
+Open NotePad and copy this exact code
+   
+   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+   <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+    <trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">
+     <security>
+      <requestedPrivileges>
+        <requestedExecutionLevel level="requireAdministrator" uiAccess="false"/>
+      </requestedPrivileges>
+     </security>
+    </trustInfo>
+   </assembly> 
+          
+<br><br>
+Name it **manifest** & save it as **.xml** file. Do not save it as .txt or anything else.
+Basically, when you run your program, your code tries to edit the hosts file, then windows says "No Access" and your app crashes.
+But a manifest saves that from happening by prompting windows to show a pop-up that asks the user to click yes 
+
+<br><br>
+Make sure your manifest is in the same folder that has main.py in it.
+<img width="729" height="286" alt="Screenshot 2026-07-26 174318" src="https://github.com/user-attachments/assets/ba7a645d-91d9-4940-a82f-e4b0c9dd6d82" />
+
+<br><br>
+<img width="875" height="253" alt="Screenshot 2026-07-26 174352" src="https://github.com/user-attachments/assets/0c867fe4-40c1-45ee-adf2-fa1f67d8fb91" />
+Then open PowerShell or command prompt 
+
+
 
 
 
