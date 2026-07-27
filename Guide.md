@@ -27,9 +27,6 @@ Windows at <mark>C:\Windows\System32\drivers\etc\hosts</mark> and on Mac/Linux a
 For example, when you type www.wikipedia.com, the computer first checks the host file. If it finds an entry, it uses that IP address. If not,
 it asks a DNS server (the internet's translator) for the correct IP.
 
-Now you might know that every device on a network has an IP address. In IPv4 networking, they look like four groups of numbers separated by three periods.
-E.g, <mark>157.240.229.35</mark> for Facebook. 
-
 Your computer has multiple addresses depending on context & one of them, is what you call a "Loopback address", which is strictly used 
 for internal testing. 
 <mark>127.0.0.1</mark> is the standard and most universally recognized loopback address, but it is technically just the first usable address in a massive reserved block that includes **16 million adresses** from <mark>127.0.0.1</mark> to <mark>127.255.255.254</mark>.
@@ -263,9 +260,9 @@ Anyways Here is my crappy design:
 <br><br>
 <img width="2417" height="1921" alt="IMG_20260724_221957_597~2" src="https://github.com/user-attachments/assets/71d36a71-37db-4ea0-bdf6-c993b33d2a08" />
 <br><br>
-I've already created the window and named the title, so now I need five more things or "widgets":-
+I've already created the window and named the title, so now I need five more widgets :-
 
-1. A big label that says "focus". This is not an action button, meaning it doesn't do anything if you press it.
+1. A display that says "focus" that shows the time when the start button is pressed
 2. A prompt asking the users to enter website list
 3. A textbox with a scrollbar 
 4. An widget that holds the duration of your focus time & finally,
@@ -327,9 +324,9 @@ Next create a function-`def _setup_ui(self):`
 Then I'm going to create my first label "FOCUS" using `tk.label()`. 
 Anytime you wanna create a label you can do it this way.
 
-After that, you can modify that button/label using attributes such as `font=(<fontname>, <fontsize>, <style>)`, `background` & `foreground`. 
+After that, you can modify that label using attributes such as `font=(<fontname>, <fontsize>, <style>)`, `background` & `foreground`. 
 
-Then you need to pack all these attributes using `self.timer.pack`. Use pady to make changes in the y direction aka make the button have greater width for example 20px. Similarly, use padx aka padding in the x direction to change the length of the label.
+Then you need to pack all these attributes using `self.timer.pack` because the display im creating is actually a timer. Use pady to make changes in the y direction aka make the button have greater width for example 20px. Similarly, use padx aka padding in the x direction to change the length of the label.
 
 <br><br>
 <img width="1365" height="567" alt="Screenshot 2026-07-13 080225" src="https://github.com/user-attachments/assets/4e3d6386-639d-495f-81ee-421ddd7ccf9a" />
@@ -351,11 +348,11 @@ I'm gonna import another module scrolledtext from tkinter because as mentioned a
 <br><br>
 <img width="720" height="542" alt="Screenshot 2026-07-13 081506" src="https://github.com/user-attachments/assets/4d74e93a-997b-4d1d-8216-af8415c92922" />
 <br><br>
-The timer label acts as a display that will later be updated throughout the session. It's stored as an instance attribute (`self.timer`) because the application needs to change its text while the timer is running.
+The timer label is stored as an instance attribute (`self.timer`) because the application needs to change its text while the timer is running.
 
 After it's created, `.pack()` adds it to the window with some vertical padding.
 
-Then create scrolledtext :-
+Then to create the textbar with scroll :-
 - `height` and `width` are defined in pixels.
 - Use `font=(<fontname>,<fontsize>)` to define well, the font.
 - `background` sets the widget's background color.
@@ -415,6 +412,8 @@ Remember the spinbox? its value is returned as a string, so we will convert it t
 If the conversion fails or the value is less than or equal to zero, an error dialog is displayed and the method exits early with `return`. Validating user input before starting the background task helps prevent unexpected runtime errors.
 
 <br><br>
+The next block of code is pretty basic python but feel free to see what they do below
+
 - Collect websites:-
 ```python
     urls = [
@@ -422,7 +421,6 @@ If the conversion fails or the value is less than or equal to zero, an error dia
     for line in self.url_txt.get("1.0", END).splitlines()
     if line.strip()
 ```
-    
 The contents of the text box are read as a single string, split into individual lines, and cleaned using `strip()`.
 The list comprehension also filters out blank lines, so the resulting list only contains actual website entries.
 
@@ -503,7 +501,7 @@ This avoids trying to stop a thread that has already finished or was never start
 ```python
 self.is_blocking = False
 ```
-The application's state flag is reset so future button presses will start a new session instead of attempting to stop one.
+The state flag is reset so future button presses will start a new session instead of attempting to stop one.
 
 The rest of the interface is then restored with through the following code snippet. The status label is updated, the action button returns to its original purpose, and the input widgets are re-enabled so the user can edit the websites or choose a new duration.
 
@@ -511,17 +509,26 @@ As in the previous section, `.config()` is used to modify existing widgets rathe
 
 Finally, an information dialog- <mark>"Sites are unblocked" </mark> lets the user know that the blocking session has ended.
 
+This is what mine looks like at the end 
+<img width="1365" height="650" alt="Screenshot 2026-07-13 092206" src="https://github.com/user-attachments/assets/927fad32-6311-4a41-a42a-4b905d40e543" />
+<img width="1365" height="667" alt="Screenshot 2026-07-13 092243" src="https://github.com/user-attachments/assets/42a8be3f-897e-4e96-9dad-389e31fb0fb5" />
+<br><br>
+When testing stuff out, you should also purposefully try and enter the wrong stuff to check if the error is being handled as you want it to be.
 
 
-
+<br><br>
 ## Time to Ship -
 
 yayayayay </3 what is shipping you say? well it doesn't really do much benefit if your awesome project sits in your computer alone and unseen :c 
 
 You must ship it - in other words, make it shareable!
 
+Scroll below to skip to Mac/Linux instructions
+
 <br>
-In Windows,
+
+### For Windows -
+
 Open NotePad and copy this exact code
    
      <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -571,6 +578,42 @@ This is what the terminal shows at the very end if you ran everything correctly.
 <br>
 Finally, you'll see Focus.exe/WebsiteBlocker.exe appear in the new dist folder. Send this exact file to people who wanna run your project.
 When you run it the first time, windows will give you warnings. Ignore them and click yes on the admin permission pop-up.
+
+### Mac/Linux -
+
+You won't be needing a manifest file but you will need to add an extra bit of code at the start of main.py to check for admin rights.
+
+```import os
+import sys
+import subprocess
+
+def is_admin():
+    try:
+        return os.getuid() == 0
+    except AttributeError:
+        return ctypes.windll.shell32.IsUserAnAdmin() != 0
+
+if not is_admin():
+    args = ['sudo', sys.executable] + sys.argv
+    os.execvp('sudo', args)
+```
+
+On macOS, it will trigger a system dialog asking for the user's password. 
+On Linux, depending on the desktop environment (GNOME, KDE), it may open a terminal window or a graphical pkexec dialog.
+
+After which you wanna build the executable which is a standalone computer file that contains all the compiled code and resources needed to run a program. You need this so that whoever you send it to can run it without needing the original source code.
+
+For that, run this in the terminal -
+```pyinstaller --onefile --windowed --name "WebsiteBlocker" main.py ```
+
+You can call your app anything, it doesn't have to be "WebsiteBlocker" specifically.
+
+Then navigate to the newly created **dist** folder containing your app using cd. Make the file executable by typing chmod +x WebsiteBlocker (you only need to do this once).
+
+Finally, run the program by typing ./WebsiteBlocker
+
+If your app needs admin rights to block websites, you must run it with sudo ./WebsiteBlocker, which will prompt you for your computer password.
+
 
 ### The file might disappear immediately upon download due to antivirus software doing its thing. Just temporarily disable real-time protection or add an exclusion for the file before running it.
 
