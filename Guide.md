@@ -15,7 +15,7 @@ created_at: 7-15-2026
 
 #### If this happens, right-click and select "Open"/ dig into security settings to run it.
 
-#### Also, don't worry if you find this guide a tad bit lengthy but that's because I tried to explain every important bit as best as I can. It took me about 3 hours in total to build this. 
+#### Also, don't worry if you find this guide a tad bit lengthy but that's because I tried to explain every important bit as best as I can. It took me about 3 hours in total to build the project. 
 
 ## Intro -
 
