@@ -15,6 +15,8 @@ created_at: 7-15-2026
 
 #### If this happens, right-click and select "Open"/ dig into security settings to run it.
 
+#### Also, don't worry if you find this guide a tad bit lengthy but that's because I tried to explain every important bit as best as I can. It took me about 3 hours in total to build this. 
+
 ## Intro -
 
 Let's understand how it works.
@@ -448,44 +450,64 @@ This gives a final confirmation to the user to use the hosts file cause it requi
 `askyesno()` returns `True` if the user clicks **Yes** and `False` otherwise. If the answer is no, the method exits.
 
 <br><br>
-<img width="977" height="390" alt="Screenshot 2026-07-22 144707" src="https://github.com/user-attachments/assets/ce761eb0-877e-49b9-9594-3a16fb366164" />
+<img width="811" height="319" alt="Screenshot 2026-07-27 115000" src="https://github.com/user-attachments/assets/56d524da-8767-484a-9b8d-0b65633abffa" />
 
 <br><br>
+
+#### Daemon Thread -
+
+Now, a signal flag in programming is a variable (usually a boolean True/False) used to send a message between different parts of a program. 
+
+In threading.Event, the signal flag works like this:
+
+It is a shared switch. Both the main program and the background thread can see this single switch.
+Two States:-
+
+Set (True): Means "Stop" or "Go" (depending on how one writes your code).
+Clear (False): Means the opposite (e.g., "Don't stop" or "Wait").
+
+When you call `.clear()`, you flip the switch to False.  This signals the thread to run.
+If you called `.set()`, it would flip the switch to True.  This would signal the thread to stop working immediately.
+
 ```python
 self.stop_event.clear()
-
-self.block_thread = threading.Thread(
-    target=logic.block,
-    args=(hrs, urls, self.stop_event),
-    daemon=True
-)
-self.block_thread.start()
 ```
-<explain>
+So this line turns the "stop signal" off.
+
+When you read further, you will see something like
+```python
+daemon = True
+```
+This is particularly useful for background tasks (like saving data or checking connections) that you don't need to finish perfectly if the user closes the app. It prevents the program from getting stuck open.
+
+In a normal thread, the main program waits for `self.block_thread` to finish its job before it closes.  If the thread gets stuck, the whole program stays open forever; but when you make `self.block_thread` a daemon by setting daemon to True, and the main program is closes or crashes, this thread is instantly killed, even if it hasn't finished its job. 
+
+#### Updating the GUI -
+
+Set `self.is_blocking` to `True`.  Other parts of the code can check this variable later to decide what to do (for example, preventing a new task from starting while one is already running). 
 
 ```python
-self.is_blocking = True
-
 self.timer_label.config(
     text=f"Blocking for {hrs}h...",
     fg="light pink"
 )
+```
+This changes the appearance of the text label that shows the time. I even had the foreground change to light pink but you can omit the visual status clue or choose your own color.
 
+```python
 self.action_btn.config(
     text="Emergency Unblock",
-    bg="white"
+    bg="red"
 )
+```
+We're gonna update the action button to change from "Start" to "Stop"/"Emergency Unblock". You may or may not need this. I personally think it's
+rather useful. I don't want that it's *really* important to access a site and I still have like 5 hours left for the app to unblock.
 
+```python
 self.url_txt.config(state=DISABLED)
 self.enter_hours.config(state=DISABLED)
 ```
-
-After which we have to reconfigure several widgets for updating the interface:-
-
-- `is_blocking` records that a session is now active.
-- The status label displays the current session.
-- The button changes from *Start Focus Session* to *Emergency Unblock*.
-- The text box and duration selector are disabled so the user can't modify the session configuration while it's running.
+This part is also optional. `state=DISABLED` puts the widget into a "read-only" or "locked" mode. This prevents you from changing settings while the blocker is still running. 
 
 <br><br>
 <img width="957" height="496" alt="Screenshot 2026-07-22 144719" src="https://github.com/user-attachments/assets/776b4fe6-69d1-4aa1-b2c7-7321e165202b" />
