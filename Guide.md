@@ -274,7 +274,7 @@ I've already created the window and named the title, so now I need five more wid
 <img width="993" height="686" alt="Screenshot 2026-07-13 003742" src="https://github.com/user-attachments/assets/0a23dd0c-2c11-4f90-a580-086851f6acb1" />
 
 <br><br>
-Back to main.py, we will import the threading module and logic.py through `import <name of your file`.
+Back to main.py, we will import the threading module and logic.py through `import file_name`.
 Since mine is simply named "logic", it will be `import logic`. You have to make sure your filename doesn't match any existing modules/libraries in python or as you might guess, it will create problems when you try and import it.
 
 I'm gonna plagiarize the definition but, *"the threading module is a built-in Python library that provides a higher-level interface for creating and managing threads, allowing multiple operations to run concurrently within the same process.  It is designed primarily for I/O-bound tasks (like web scraping or file operations) where the program spends time waiting for external resources"*
