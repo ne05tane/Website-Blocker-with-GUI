@@ -42,7 +42,7 @@ The GUI simply provides an easy way to add or remove these lines without you nee
 
 So there you have it! Let's start building.
 
-### Remember, you should make your own changes to your project. Question and find out when you're stuck. Do not blindly copy every step, that is the way to learm!
+### Remember to not blindly copy every step. Just use the code to learn the logic and tweak your project to your liking.
 
 
 ## SetUp -
@@ -547,6 +547,7 @@ You must ship it - in other words, make it shareable!
 
 Scroll below to skip to Mac/Linux instructions
 
+### Hopefully, you didn't copy paste the whole thing. You gotta make it yours- different UI, a silly feature, funny error messages, it's upto you as long as you built something that actually looks like **you** made it :)
 <br>
 
 ### For Windows -
